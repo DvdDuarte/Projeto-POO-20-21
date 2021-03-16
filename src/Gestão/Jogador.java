@@ -13,10 +13,18 @@ public class Jogador {
     private double jogoCabeca;
     private double remate;
     private double capacidadePasse;
-    private List historial;
+    private List<String> historial;
 
-    public Jogador() {
+    public Jogador(String nome,int idade) {
         //completar
+        setNome(nome);
+        setIdade(idade);
+
+
+
+
+
+
     }
 
     public String getNome() {

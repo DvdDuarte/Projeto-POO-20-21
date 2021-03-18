@@ -1,6 +1,5 @@
 package Gestão;
 
-
 import java.util.List;
 
 public class Jogador {
@@ -15,10 +14,12 @@ public class Jogador {
     private double capacidadePasse;
     private List<String> historial;
 
-    public Jogador(String nome,int idade) {
+    public Jogador(String nome,int idade,List<>String> historial) {
         //completar
         setNome(nome);
         setIdade(idade);
+        setHistorial(historial);
+
 
     }
 
@@ -106,7 +107,7 @@ public class Jogador {
              return aux;
     }
 
-    public void setHistorial(List historial) {
+    public void setHistorial(List<String> historial) {
         this.historial = new ArrayList<String>(historial.size());
         for(String team : historial) this.historial.add(team);
 

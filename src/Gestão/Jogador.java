@@ -20,14 +20,10 @@ public class Jogador {
         setNome(nome);
         setIdade(idade);
 
-
-
-
-
-
     }
 
     public String getNome() {
+        //nao pode retornar nome
         return nome;
     }
 
@@ -40,6 +36,8 @@ public class Jogador {
     }
 
     public void setNome(String nome) {
+        //copiar nome
+        this.nome= new String();
         this.nome = nome;
     }
 
@@ -100,10 +98,17 @@ public class Jogador {
     }
 
     public List getHistorial() {
-        return historial;
+        //nao pode retornar apontador
+        List aux= new ArrayList<String>(this.historial.size());
+        for(String h:historial){
+            aux.add(h);
+        }
+             return aux;
     }
 
     public void setHistorial(List historial) {
-        this.historial = historial;
+        this.historial = new ArrayList<String>(historial.size());
+        for(String team : historial) this.historial.add(team);
+
     }
 }

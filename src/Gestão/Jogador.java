@@ -112,4 +112,7 @@ public class Jogador {
         for(String team : historial) this.historial.add(team);
 
     }
+    public void imprimeJogador(Jogador j){
+        System.out.println("O jogador "+j.nome+"de "+j.idade+"anos foi criado");
+    }
 }

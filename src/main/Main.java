@@ -1,4 +1,5 @@
 package main;
+package Gestão;
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
@@ -17,7 +18,10 @@ public class Main {
 
             switch(op){
                 case 1 :
+                    
                 case 2 :
+                    Jogador j1=new Jogador("nome1",25);
+                    imprimeJogador(j1);
             }
 
         }while(op != 3);

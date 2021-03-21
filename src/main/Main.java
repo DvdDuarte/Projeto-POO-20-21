@@ -1,12 +1,17 @@
 package main;
-package Gestão;
+
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
+import Gestão.Jogador;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        Jogador j = new Jogador("olá",12, new ArrayList<>());
         TripleSFootball tsf = new TripleSFootball();
         Scanner in = new Scanner(System.in);
         int op = 0;
@@ -20,8 +25,8 @@ public class Main {
                 case 1 :
 
                 case 2 :
-                    Jogador j1=new Jogador("nome1",25);
-                    imprimeJogador(j1);
+                    Jogador j1=new Jogador("nome1",25, new ArrayList<>());
+                    j.imprimeJogador(j1);
             }
 
         }while(op != 3);

@@ -1,5 +1,6 @@
 package Gestão;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
@@ -14,7 +15,7 @@ public class Jogador {
     private double capacidadePasse;
     private List<String> historial;
 
-    public Jogador(String nome,int idade,List<>String> historial) {
+    public Jogador(String nome,int idade,List<String> historial) {
         //completar
         setNome(nome);
         setIdade(idade);

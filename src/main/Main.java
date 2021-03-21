@@ -1,6 +1,4 @@
 package main;
-//David, arranja um nome melhor para o jogo melhor do que
-// Triple-S Football
 
 import java.util.Scanner;
 

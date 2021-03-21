@@ -1,6 +1,5 @@
 package Gestão;
 
-
 import java.util.List;
 
 public class Jogador {

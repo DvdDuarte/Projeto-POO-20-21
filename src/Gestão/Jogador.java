@@ -1,6 +1,5 @@
 package Gestão;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
@@ -13,9 +12,9 @@ public class Jogador {
     private double jogoCabeca;
     private double remate;
     private double capacidadePasse;
-    private List historial;
+    private List<String> historial;
 
-    public Jogador(String nome,int idade,List<String> historial) {
+    public Jogador(String nome,int idade,List<>String> historial) {
         //completar
         setNome(nome);
         setIdade(idade);
@@ -102,7 +101,7 @@ public class Jogador {
     public List getHistorial() {
         //nao pode retornar apontador
         List aux= new ArrayList<String>(this.historial.size());
-        for(String h : historial){
+        for(String h:historial){
             aux.add(h);
         }
         return aux;
@@ -116,6 +115,4 @@ public class Jogador {
     public void imprimeJogador(Jogador j){
         System.out.println("O jogador "+j.nome+"de "+j.idade+"anos foi criado");
     }
-}
-
 }

@@ -1,6 +1,7 @@
 package main;
-
-import Gestão.*;
+package Gestão;
+//David, arranja um nome melhor para o jogo melhor do que
+// Triple-S Football
 
 import java.util.Scanner;
 

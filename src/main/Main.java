@@ -1,5 +1,7 @@
 package main;
 
+import Gestão.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +17,10 @@ public class Main {
 
             switch(op){
                 case 1 :
+
                 case 2 :
+                    Jogador j1=new Jogador("nome1",25);
+                    imprimeJogador(j1);
             }
 
         }while(op != 3);

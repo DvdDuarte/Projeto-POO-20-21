@@ -3,7 +3,7 @@ package main;
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
-import Gestão.Jogador;
+import gestão.Jogador;
 
 import java.util.ArrayList;
 import java.util.List;

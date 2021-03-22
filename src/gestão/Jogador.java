@@ -1,4 +1,4 @@
-package Gestão;
+package gestão;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,6 @@ public class Jogador {
         setNome(nome);
         setIdade(idade);
         setHistorial(historial);
-
-
     }
 
     public String getNome() {

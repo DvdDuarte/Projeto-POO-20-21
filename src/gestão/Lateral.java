@@ -1,4 +1,4 @@
-package Gestão;
+package gestão;
 
 public class Lateral extends Jogador {
 

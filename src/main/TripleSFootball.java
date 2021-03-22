@@ -1,6 +1,6 @@
 package main;
 
-import Gestão.*;
+import gestão.*;
 import java.util.List;
 
 public class TripleSFootball {

@@ -25,8 +25,7 @@ public class Main {
                 case 1 :
 
                 case 2 :
-                    Jogador j1=new Jogador("nome1",25, new ArrayList<>());
-                    j.imprimeJogador(j1);
+
             }
 
         }while(op != 3);

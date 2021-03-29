@@ -13,9 +13,11 @@ public class Jogador {
     private double jogoCabeca;
     private double remate;
     private double capacidadePasse;
+    private String posicao;
     private List<String> historial;
 
-    public Jogador(String nome,int idade,List<String> historial) {
+    public Jogador(String nome,int idade,double velocidade, double resistencia, double destreza, double impulsao, double jogoCabeca,
+                   double remate,double capacidadePasse, String posicao, List<String> historial) {
         //completar
         setNome(nome);
         setIdade(idade);
@@ -36,8 +38,6 @@ public class Jogador {
     }
 
     public void setNome(String nome) {
-        //copiar nome
-        this.nome= new String();
         this.nome = nome;
     }
 
@@ -97,9 +97,18 @@ public class Jogador {
         this.capacidadePasse = capacidadePasse;
     }
 
-    public List getHistorial() {
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    //rever isto
+    public List<String> getHistorial() {
         //nao pode retornar apontador
-        List aux= new ArrayList<String>(this.historial.size());
+        List<String>aux= new ArrayList<>();
         for(String h:historial){
             aux.add(h);
         }
@@ -107,10 +116,29 @@ public class Jogador {
     }
 
     public void setHistorial(List<String> historial) {
-        this.historial = new ArrayList<String>(historial.size());
+        this.historial = new ArrayList<>();
         for(String team : historial) this.historial.add(team);
 
     }
+
+
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", velocidade=" + velocidade +
+                ", resistencia=" + resistencia +
+                ", destreza=" + destreza +
+                ", impulsao=" + impulsao +
+                ", jogoCabeca=" + jogoCabeca +
+                ", remate=" + remate +
+                ", capacidadePasse=" + capacidadePasse +
+                ", posicao='" + posicao + '\'' +
+                ", historial=" + historial +
+                '}';
+    }
+
     public void imprimeJogador(Jogador j){
         System.out.println("O jogador "+j.nome+"de "+j.idade+"anos foi criado");
     }

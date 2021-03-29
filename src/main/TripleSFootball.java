@@ -1,6 +1,8 @@
 package main;
-
+import gestão.Jogador;
 import gestão.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class TripleSFootball {
@@ -12,9 +14,12 @@ public class TripleSFootball {
     public void criaEquipa(){
 
     }
+    /*Jogador j1=new Jogador("nome1",25, new ArrayList<>());
+                    j.imprimeJogador(j1);*/
 
     public void criaJogador(){
-
+        //rever
+    Jogador j1= new Jogador();
     }
 
 

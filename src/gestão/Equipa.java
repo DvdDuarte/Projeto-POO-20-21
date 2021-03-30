@@ -7,7 +7,7 @@ import java.util.List;
 public class Equipa {
 
     private String nome;
-    private List<Jogador> jogadores;
+    private ArrayList<Jogador> jogadores;
     private Jogador[] titulares;
     private Jogador[] reservas;
 
@@ -41,14 +41,17 @@ public class Equipa {
 
 
     public String getNome() {
+
         return nome;
     }
 
     public void setNome(String nome) {
+
         this.nome = nome;
     }
 
-    public List<Jogador> getJogadores() {
+    public ArrayList<Jogador> getJogadores() {
+
         return this.jogadores;
     }
 
@@ -65,19 +68,27 @@ public class Equipa {
     }
 
     public Jogador[] getTitulares() {
+
         return titulares;
+
     }
 
     public void setTitulares(Jogador[] titulares) {
+
         this.titulares = titulares;
+
     }
 
     public Jogador[] getReservas() {
+
         return reservas;
+
     }
 
     public void setReservas(Jogador[] reservas) {
+
         this.reservas = reservas;
+
     }
 
 

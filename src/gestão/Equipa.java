@@ -1,13 +1,91 @@
 package gestão;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Equipa {
-    List<Jogador> titulares;
-    public Equipa(){
-        for(int i=0;i<11;i++){
-            Jogador j=new Jogador("nome",25,50,50,50,50,50,50,50,"avancado",//como faco isso);
 
-        }
+public class Equipa {
+
+    private String nome;
+    private List<Jogador> jogadores;
+    private Jogador[] titulares;
+    private Jogador[] reservas;
+
+
+    public Equipa() {
+
+        this.nome = "n/a";
+        this.jogadores = new ArrayList<Jogador>();
+        this.titulares = new Jogador[11];
+        this.reservas = new Jogador[7];
+
     }
+
+    public Equipa(String nome, List<Jogador> jogadores, Jogador[] titulares, Jogador[] reservas) {
+
+        this.nome = nome;
+        this.setJogadores(jogadores);
+        this.setTitulares(titulares);
+        this.setReservas(reservas);
+
+    }
+
+    public Equipa (Equipa equipa) {
+
+        this.nome = equipa.getNome();
+        this.jogadores = equipa.getJogadores();
+        this.titulares = equipa.getTitulares();
+        this.reservas = equipa.getReservas();
+
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Jogador> getJogadores() {
+        return this.jogadores;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+
+        this.jogadores = new ArrayList<>();
+
+            for (Jogador l : jogadores) {
+
+                this.jogadores.add(l.clone());
+
+            }
+
+    }
+
+    public Jogador[] getTitulares() {
+        return titulares;
+    }
+
+    public void setTitulares(Jogador[] titulares) {
+        this.titulares = titulares;
+    }
+
+    public Jogador[] getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Jogador[] reservas) {
+        this.reservas = reservas;
+    }
+
+
+    public Equipa clone() {
+
+        return new Equipa(this);
+
+    }
+
+
 }

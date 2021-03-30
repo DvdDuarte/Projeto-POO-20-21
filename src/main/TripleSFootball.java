@@ -4,10 +4,11 @@ import gestão.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TripleSFootball {
-    private List<Equipa> equipas;
-    private List<Jogador> jogadores;
+   // private List<Equipa> equipas;
+  //  private List<Jogador> jogadores;
     //lista de equipas
     //lista de jogadores
 
@@ -19,7 +20,7 @@ public class TripleSFootball {
 
     public void criaJogador(){
         //rever
-    Jogador j1= new Jogador();
+        //Jogador j1= new Jogador();
     }
 
 

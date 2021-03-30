@@ -91,8 +91,9 @@ public class Equipa {
 
     }
 
-
-    public Equipa clone() {
+//rever!!!
+    public Equipa clone() throws CloneNotSupportedException {
+        Equipa clone = (Equipa) super.clone();
 
         return new Equipa(this);
 

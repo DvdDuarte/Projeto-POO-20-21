@@ -63,12 +63,26 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
                 case 2 :
                     //criar jogador
                     System.out.println("Insira o nome do jogador a ser criado");
-                    String nomeJ= in.nextLine();
+                    String nomeJ2= in.nextLine();
                     System.out.println("Insira a idade do jogador a ser criado");
                     int idadeJ2=in.nextInt();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double velJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double resJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double desJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double impJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double jdcJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double remJ2=in.nextDouble();
+                    System.out.println("Insira a velocidade do jogador a ser criado");
+                    double cdpJ2=in.nextDouble();
                     System.out.println("Insira resto das informacoes do jogador a ser criado");
-                    tsf.criaJogador();//com os argumentos certos
-
+                    tsf.criaJogador(nomeJ2,idadeJ2, velJ2, resJ2, desJ2, impJ2, jdcJ2, remJ2, cdpJ2);//com os argumentos certos
+                    //falta definir posicao do jogador
                     break;
                 case 3 :
                     //transferir jogador

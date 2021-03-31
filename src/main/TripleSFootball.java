@@ -23,10 +23,23 @@ public class TripleSFootball {
     }
 
 
-    public void criaJogador(){
-        //rever argumentos
+    public void criaJogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp){
+      //rever argumentos
+      //falta definir posicao do jogador
+      Jogador j1= new Jogador();
+      j1.setNome(n);
+      j1.setIdade(i);
+      j1.setDestreza(des);
+      j1.setCapacidadeDePasse(cdp);
+      j1.setJogoDeCabeca(jdc);
+      j1.setVelocidade(vel);
+      j1.setResistencia(res);
+      j1.setImpulsao(imp);
+      j1.setRemate(rem);
 
-        //Jogador j1= new Jogador();
+      List<String> h= new ArrayList<>();
+      h.add("fantasma");
+      j1.setHistorial(h);
 
     }
     public void transfereJogador(String nomeJ, String nomeENova){

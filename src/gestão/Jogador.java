@@ -29,7 +29,7 @@ public class Jogador {
         this.historial = new ArrayList<>();
     }
 
-    public Jogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp,List<String> hist) {
+    public Jogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
         this.nome = n;
         this.idade = i;
         this.velocidade = vel;
@@ -54,6 +54,7 @@ public class Jogador {
         this.capacidadeDePasse = j.getCapacidadeDePasse();
         this.historial = j.getHistorial();
     }
+
 
     public String getNome() {
         return nome;
@@ -83,6 +84,10 @@ public class Jogador {
         return jogoDeCabeca;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public double getRemate() {
         return remate;
     }
@@ -93,10 +98,6 @@ public class Jogador {
 
     public List<String> getHistorial() {
         return this.historial;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public void setIdade(int idade) {
@@ -133,35 +134,36 @@ public class Jogador {
 
     public void setHistorial(List<String> historial) {
         this.historial = new ArrayList<>();
-        for(String s : historial){
+        for (String s : historial) {
             this.historial.add(s);
         }
     }
 
-    public String toString(){
-        return "Nome :"+this.nome+
-               "\nIdade :"+this.idade+
-               "\nVelocidade :"+this.velocidade+
-               "\nResistencia :"+this.resistencia+
-               "\nDestreza :"+this.destreza+
-               "\nImpulsao :"+this.impulsao+
-               "\nJogo De Cabeça :"+this.jogoDeCabeca+
-               "\nRemate :"+this.remate+
-               "\nCapacidade De Passe :"+this.capacidadeDePasse+
-               "\nHistorial :"+this.historial.toString();
+
+    public String toString() {
+        return "Nome :" + this.nome +
+                "\nIdade :" + this.idade +
+                "\nVelocidade :" + this.velocidade +
+                "\nResistencia :" + this.resistencia +
+                "\nDestreza :" + this.destreza +
+                "\nImpulsao :" + this.impulsao +
+                "\nJogo De Cabeça :" + this.jogoDeCabeca +
+                "\nRemate :" + this.remate +
+                "\nCapacidade De Passe :" + this.capacidadeDePasse +
+                "\nHistorial :" + this.historial.toString();
     }
 
-    public boolean equals(Object o){
-        if(this == o){
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if(o == null || this.getClass() != o.getClass()){
+        if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
-        Jogador j = (Jogador)o;
-        return j.getNome()==this.nome && j.getIdade()==this.idade && j.getVelocidade()==this.velocidade &&
-                j.getDestreza()==this.destreza && j.getImpulsao() == this.impulsao && j.getJogoDeCabeca()==this.jogoDeCabeca &&
-                j.getResistencia()==this.resistencia && j.getRemate()==this.remate && j.getCapacidadeDePasse() == this.capacidadeDePasse &&
+        Jogador j = (Jogador) o;
+        return j.getNome() == this.nome && j.getIdade() == this.idade && j.getVelocidade() == this.velocidade &&
+                j.getDestreza() == this.destreza && j.getImpulsao() == this.impulsao && j.getJogoDeCabeca() == this.jogoDeCabeca &&
+                j.getResistencia() == this.resistencia && j.getRemate() == this.remate && j.getCapacidadeDePasse() == this.capacidadeDePasse &&
                 this.historial.equals(j.getHistorial());
     }
 

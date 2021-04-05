@@ -23,9 +23,11 @@ public class TripleSFootball {
     }
 
 
-    public void criaJogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp){
+    public void criaJogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, String posicao){
       //rever argumentos
       //falta definir posicao do jogador
+      //posicao??
+
       Jogador j1= new Jogador();
       j1.setNome(n);
       j1.setIdade(i);

@@ -14,10 +14,23 @@ public class TripleSFootball {
     //lista de jogadores
     public TripleSFootball(){
       //construtor do estado do jogo inicial
+      this.equipas=new ArrayList<>();
 
     }
 
-    //tambem criar equipa fantasma
+  public List<Equipa> getEquipas() {
+    //rever
+          return this.equipas;
+  }
+
+  public void setEquipas()  {
+      this.equipas=new ArrayList<>();
+      for(Equipa e: equipas){
+        this.equipas.add(e);
+      }
+  }
+
+  //tambem criar equipa fantasma
     public Equipa criaEquipa(){
         //rever argumentos
         Equipa e1= new Equipa();

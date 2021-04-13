@@ -3,6 +3,7 @@ package main;
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
+import gestão.GuardaRedes;
 import gestão.Jogador;
 
 import java.util.ArrayList;
@@ -83,7 +84,16 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
                     System.out.println("Insira resto das informacoes do jogador a ser criado");
                     System.out.println("Insira a posicao do jogador a ser criado");
                     String posicaoJ2= in.nextLine();
-                    tsf.criaJogador(nomeJ2,idadeJ2, velJ2, resJ2, desJ2, impJ2, jdcJ2, remJ2, cdpJ2,posicaoJ2);//com os argumentos certos
+                    Jogador j2;
+                    if(posicaoJ2.equals("GuardaRedes")){
+                        System.out.println("Insira a a elasticidade do GuardaRedes a ser criado");
+                        double elas= in.nextDouble();
+                        j2=tsf.criaGuardaRedes(nomeJ2,idadeJ2, velJ2, resJ2, desJ2, impJ2, jdcJ2, remJ2, cdpJ2,elas);
+                    }else {
+                        //ver meio de validar posicao
+                        j2=tsf.criaJogador(nomeJ2, idadeJ2, velJ2, resJ2, desJ2, impJ2, jdcJ2, remJ2, cdpJ2, posicaoJ2);//com os argumentos certos
+                    }
+
 
                     break;
                 case 3 :

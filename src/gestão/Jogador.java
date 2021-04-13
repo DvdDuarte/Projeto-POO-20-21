@@ -177,15 +177,10 @@ public class Jogador {
     }
 
     public void setHistorial(List<String> historial) {
-
         this.historial = new ArrayList<>();
-
         for (String s : historial) {
-
             this.historial.add(s);
-
         }
-
     }
 
 

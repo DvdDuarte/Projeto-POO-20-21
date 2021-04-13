@@ -7,6 +7,7 @@ import java.util.List;
 
 public class TripleSFootball {
   private List<Equipa> equipas;
+
   //resto das propriedades do jogo por definir
 
     //private List<Jogador> jogadores;
@@ -15,19 +16,25 @@ public class TripleSFootball {
     public TripleSFootball(){
       //construtor do estado do jogo inicial
       this.equipas=new ArrayList<>();
-
     }
+  public TripleSFootball(List<Equipa> lista){
+    //construtor do estado do jogo inicial
+    this.equipas=new ArrayList<>();
+    setEquipas(lista);
+
+  }
 
   public List<Equipa> getEquipas() {
     //rever
           return this.equipas;
   }
 
-  public void setEquipas()  {
-      this.equipas=new ArrayList<>();
-      for(Equipa e: equipas){
-        this.equipas.add(e);
-      }
+
+  public void setEquipas(List<Equipa> lista) {
+    //rever
+    for (Equipa e : lista) {
+      this.equipas.add(e);
+    }
   }
 
   //tambem criar equipa fantasma
@@ -35,7 +42,6 @@ public class TripleSFootball {
         //rever argumentos
         Equipa e1= new Equipa();
         //fazer algo
-
         return e1;
     }
   public Equipa criaEquipaFantasma(){
@@ -52,18 +58,16 @@ public class TripleSFootball {
       switch (posicao) {
         case "Defesa":
           j = new Defesa(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-
           break;
         case "Medio":
           j = new Medio(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-
           break;
         case "Avancado":
           j = new Avancado(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-          return j;
+          break;
         case "Lateral":
           j = new Lateral(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-          return j;
+          break;
         default:
           return null;
       }
@@ -83,8 +87,10 @@ public class TripleSFootball {
 
 
 
-    public void transfereJogador(String nomeJ, String nomeENova){
+    public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
         //usa os nomes para identificar os objetos Jogador j, Equipa eAntiga e Equipa eNova
+      //procurar o jogador pelo nome
+      //procurar equipas pelo nome
 
 
         //retira jogador da lista de jogadores da equipa eAntiga

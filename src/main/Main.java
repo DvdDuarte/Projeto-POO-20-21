@@ -101,10 +101,13 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
                     System.out.println("Insira o nome do jogador a ser transferido");
                     String nomeJ3= in.nextLine();
                     //caso o jogador estiver na equipa fantasma, sai dela para a outra equipa, caso contrario
+                    System.out.println("Insira o nome da velha equipa do jogador, " +
+                            "caso o jogador nao va para nenhuma equipa ainda, digite 'fantasma'");
+                    String nomeE3_velha= in.nextLine();
                     System.out.println("Insira o nome da nova equipa do jogador, " +
                         "caso o jogador nao va para nenhuma equipa ainda, digite 'fantasma'");
                     String nomeE3_nova= in.nextLine();
-                    tsf.transfereJogador(nomeJ3,nomeE3_nova);
+                    tsf.transfereJogador(nomeJ3,nomeE3_velha,nomeE3_nova);
 
                     break;
                 case 4 :

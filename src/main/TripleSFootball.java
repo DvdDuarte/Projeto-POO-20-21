@@ -3,40 +3,48 @@ import gestão.Jogador;
 import gestão.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TripleSFootball {
-  private List<Equipa> equipas;
+  private Map<String,List<Equipa>> equipas;
+ //private Map<String,List<Jogador>> jogadores;
 
   //resto das propriedades do jogo por definir
 
-    //private List<Jogador> jogadores;
-    //lista de equipas
+  //lista de equipas
     //lista de jogadores
     public TripleSFootball(){
       //construtor do estado do jogo inicial
-      this.equipas=new ArrayList<>();
+      equipas= new HashMap<>();
+      //jogadores= new HashMap<>();
     }
-  public TripleSFootball(List<Equipa> lista){
+  public TripleSFootball(Map<String,List<Equipa>> lista){
     //construtor do estado do jogo inicial
-    this.equipas=new ArrayList<>();
-    setEquipas(lista);
+        setEquipas(lista);
 
   }
+  public TripleSFootball(TripleSFootball tsf){
+    setEquipas(tsf.getEquipas());
+    }
 
-  public List<Equipa> getEquipas() {
+  public Map<String,List<Equipa>> getEquipas() {
     //rever
           return this.equipas;
   }
 
 
-  public void setEquipas(List<Equipa> lista) {
+  public void setEquipas(Map<String,List<Equipa>> lista) {
     //rever
-    for (Equipa e : lista) {
-      this.equipas.add(e);
+    equipas = new HashMap();
+    for (Map.Entry<String, List<Equipa>>
+            l : lista.entrySet()) {
+      List<Equipa> lista_aux =
+              new ArrayList<>(l.getValue());
+      equipas.put(l.getKey(), lista_aux);
     }
   }
-
   //tambem criar equipa fantasma
     public Equipa criaEquipa(){
         //rever argumentos
@@ -85,23 +93,19 @@ public class TripleSFootball {
       return j;
     }
 
-
-
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
-        //usa os nomes para identificar os objetos Jogador j, Equipa eAntiga e Equipa eNova
-      //procurar o jogador pelo nome
-      //procurar equipas pelo nome
-
-
-        //retira jogador da lista de jogadores da equipa eAntiga
-
-
-        //acrescenta jogador a lista de jogadores da equipa eNova
-
-
-        //acrescenta equipa eNova ao final do historial do jogador j
+       //usa os nomes para identificar os objetos Jogador j, Equipa eAntiga e Equipa eNova
+       //procurar o jogador pelo nome
+       //procurar equipas pelo nome
+       //retira jogador da lista de jogadores da equipa eAntiga
+       //acrescenta jogador a lista de jogadores da equipa eNova
+       //acrescenta equipa eNova ao final do historial do jogador j
 
     }
+    public TripleSFootball clone(){
+      return new TripleSFootball(this);
+    }
+
     public void apagaJogador(String nomeJ){
         //usa o nome para identificar o objeto Jogador j
 

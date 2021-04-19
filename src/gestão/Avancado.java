@@ -32,6 +32,7 @@ public class Avancado extends Jogador {
     public double getPesoResistencia(){
         return pResistencia;
     }
+
     public double getPesoDestreza(){
         return pDestreza;
     }
@@ -59,7 +60,7 @@ public class Avancado extends Jogador {
 
     public boolean equals(Object o) {
         if(o == this) return true;
-        if(o.getClass() == this.getClass() || o == null) return false;
+        if(o.getClass() != this.getClass() || o == null) return false;
 
         Avancado a = (Avancado)o;
         return super.equals(o) && a.getPesoVelocidade() == this.pVelocidade

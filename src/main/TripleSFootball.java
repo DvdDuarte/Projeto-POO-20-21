@@ -87,7 +87,7 @@ public class TripleSFootball {
     public Jogador criaGuardaRedes(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, Double elas){
       List<String> h= new ArrayList<>();
       h.add("fantasma");
-      Jogador j=new GuardaRedes(n,i,vel,res,des,imp,jdc,rem,cdp,h,elas);
+      Jogador j=new GuardaRedes(n,i,vel,res,des,imp,jdc,rem,cdp,elas,h);
       //acrescentar j a equipa fantasma
 
       return j;

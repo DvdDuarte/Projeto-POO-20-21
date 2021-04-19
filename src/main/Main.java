@@ -3,6 +3,7 @@ package main;
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
+import gestão.Avancado;
 import gestão.GuardaRedes;
 import gestão.Jogador;
 
@@ -13,9 +14,41 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
     //  Jogador j = new Jogador("olá",12, new ArrayList<>());
-        TripleSFootball tsf = new TripleSFootball();
+        //TripleSFootball tsf = new TripleSFootball();
         Scanner in = new Scanner(System.in);
         int op = 0;
+
+        System.out.println("Nome do Jogador: ");
+        String nome = in.nextLine();
+        System.out.println("Idade: ");
+        int idade = in.nextInt();
+        System.out.println("Velocidade: ");
+        double vel = in.nextDouble();
+        System.out.println("Resistencia: ");
+        double res = in.nextDouble();
+        System.out.println("Destreza: ");
+        double des = in.nextDouble();
+        System.out.println("Impulsão: ");
+        double imp = in.nextDouble();
+        System.out.println("Jogo de cabeça: ");
+        double jdc = in.nextDouble();
+        System.out.println("Remate: ");
+        double rem = in.nextDouble();
+        System.out.println("Capacidade De Passe: ");
+        double cdp = in.nextDouble();
+        List <String> hist = new ArrayList<>();
+
+        Avancado a1 = new Avancado(nome,idade,vel,res,des,imp,jdc,rem,cdp,hist);
+
+        System.out.println(a1.toString());
+
+        Avancado a2 = a1.clone();
+
+        System.out.println(a1.equals(a2));
+
+        Avancado a3 = new Avancado();
+
+        System.out.println(a3.equals(a2));
 /*
 lista de opcoes:
 criar equpipa fantasma(primeira equipa dos jogadores criados)
@@ -46,7 +79,7 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
 
 
  */
-        do {
+  /*      do {
             System.out.println("1- Criar equipa\n2- Criar Jogador\n3- Tranferir jogador de clube\n4- Apagar jogador criado\n" +
                     "5- Apagar equipa\n0- Saír");
             op = in.nextInt();
@@ -130,5 +163,7 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
             }
 
         }while(op != 0);
+    */
     }
+
 }

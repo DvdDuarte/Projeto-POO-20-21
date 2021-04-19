@@ -59,7 +59,7 @@ public class Medio extends Jogador {
 
     public boolean equals(Object o) {
         if(o == this) return true;
-        if(o.getClass() == this.getClass() || o == null) return false;
+        if(o.getClass() != this.getClass() || o == null) return false;
 
         Medio m = (Medio)o;
         return super.equals(o) && m.getPesoVelocidade() == this.pVelocidade

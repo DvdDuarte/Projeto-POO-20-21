@@ -59,7 +59,7 @@ public class Defesa extends Jogador {
 
     public boolean equals(Object o) {
         if(o == this) return true;
-        if(o.getClass() == this.getClass() || o == null) return false;
+        if(o.getClass() != this.getClass() || o == null) return false;
 
         Defesa d = (Defesa)o;
         return super.equals(o) && d.getPesoVelocidade() == this.pVelocidade

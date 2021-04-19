@@ -73,7 +73,7 @@ public class GuardaRedes extends Jogador {
 
     public boolean equals(Object o) {
         if(o == this) return true;
-        if(o.getClass() == this.getClass() || o == null) return false;
+        if(o.getClass() != this.getClass() || o == null) return false;
 
         GuardaRedes gr = (GuardaRedes)o;
         return super.equals(o) && gr.getPesoVelocidade() == this.pVelocidade

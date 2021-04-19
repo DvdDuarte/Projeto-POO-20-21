@@ -59,7 +59,7 @@ public class Lateral extends Jogador {
 
     public boolean equals(Object o) {
         if(o == this) return true;
-        if(o.getClass() == this.getClass() || o == null) return false;
+        if(o.getClass() != this.getClass() || o == null) return false;
 
         Lateral l = (Lateral)o;
         return super.equals(o) && l.getPesoVelocidade() == this.pVelocidade

@@ -13,27 +13,65 @@ public class Lateral extends Jogador {
     private final double pCapacidadeDePasse = 0.2;
 
 
-    public Lateral(){
+    public Lateral() {
         super();
     }
 
-    public Lateral(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist){
-        super(n,i,vel,res,des,imp,jdc,rem,cdp,hist);
+    public Lateral(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
+        super(n, i, vel, res, des, imp, jdc, rem, cdp, hist);
     }
 
-    public Lateral(Lateral a){
-        super(a.getNome(),a.getIdade(),a.getVelocidade(),a.getResistencia(),a.getDestreza(),a.getImpulsao(),a.getJogoDeCabeca(),a.getRemate(),a.getCapacidadeDePasse(),a.getHistorial());
+    public Lateral(Lateral l) {
+        super(l);
     }
 
-    public String toString(){
+    public double getPesoVelocidade(){
+        return pVelocidade;
+    }
+
+    public double getPesoResistencia(){
+        return pResistencia;
+    }
+    public double getPesoDestreza(){
+        return pDestreza;
+    }
+
+    public double getPesoImpulsao(){
+        return pImpulsao;
+    }
+
+    public double getPesoJogoDeCabeca(){
+        return pJogoDeCabeca;
+    }
+
+    public double getPesoRemate(){
+        return pRemate;
+    }
+
+    public double getPesoCapacidadeDePasse(){
+        return pCapacidadeDePasse;
+    }
+
+
+    public String toString() {
         return super.toString();
     }
 
-    public boolean equals(Object o){
-        return super.equals(o);
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(o.getClass() == this.getClass() || o == null) return false;
+
+        Lateral l = (Lateral)o;
+        return super.equals(o) && l.getPesoVelocidade() == this.pVelocidade
+                && l.getPesoCapacidadeDePasse() == this.pCapacidadeDePasse
+                && l.getPesoDestreza() == this.pDestreza
+                && l.getPesoImpulsao() == this.pImpulsao
+                && l.getPesoJogoDeCabeca() == this.pJogoDeCabeca
+                && l.getPesoRemate() == this.pRemate
+                && l.getPesoResistencia() == this.pResistencia;
     }
 
-    public Lateral clone(){
+    public Lateral clone() {
         return new Lateral(this);
     }
 }

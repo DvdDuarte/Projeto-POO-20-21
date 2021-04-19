@@ -66,6 +66,16 @@ public class GuardaRedes extends Jogador {
         return pCapacidadeDePasse;
     }
 
+    public double calculaHabilidade(){
+        double habilidade;
+
+        habilidade = super.getRemate()*this.pRemate + super.getCapacidadeDePasse()*this.pCapacidadeDePasse
+                + super.getDestreza()*this.pDestreza + super.getImpulsao()*this.pImpulsao
+                + super.getJogoDeCabeca()*this.pJogoDeCabeca + super.getResistencia()*this.pResistencia
+                + super.getVelocidade()*this.pVelocidade + this.elasticidade*this.pElasticidade;
+
+        return habilidade;
+    }
 
     public String toString() {
         return super.toString()+"\nElasticidade: "+this.elasticidade;

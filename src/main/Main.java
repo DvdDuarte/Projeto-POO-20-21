@@ -17,38 +17,6 @@ public class Main {
         //TripleSFootball tsf = new TripleSFootball();
         Scanner in = new Scanner(System.in);
         int op = 0;
-
-        System.out.println("Nome do Jogador: ");
-        String nome = in.nextLine();
-        System.out.println("Idade: ");
-        int idade = in.nextInt();
-        System.out.println("Velocidade: ");
-        double vel = in.nextDouble();
-        System.out.println("Resistencia: ");
-        double res = in.nextDouble();
-        System.out.println("Destreza: ");
-        double des = in.nextDouble();
-        System.out.println("Impulsão: ");
-        double imp = in.nextDouble();
-        System.out.println("Jogo de cabeça: ");
-        double jdc = in.nextDouble();
-        System.out.println("Remate: ");
-        double rem = in.nextDouble();
-        System.out.println("Capacidade De Passe: ");
-        double cdp = in.nextDouble();
-        List <String> hist = new ArrayList<>();
-
-        Avancado a1 = new Avancado(nome,idade,vel,res,des,imp,jdc,rem,cdp,hist);
-
-        System.out.println(a1.toString());
-
-        Avancado a2 = a1.clone();
-
-        System.out.println(a1.equals(a2));
-
-        Avancado a3 = new Avancado();
-
-        System.out.println(a3.equals(a2));
 /*
 lista de opcoes:
 criar equpipa fantasma(primeira equipa dos jogadores criados)

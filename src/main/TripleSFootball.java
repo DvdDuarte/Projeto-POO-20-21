@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TripleSFootball {
-  private Map<String,List<Equipa>> equipas;
- //private Map<String,List<Jogador>> jogadores;
+  private Map<String,Equipa> equipas;
+ private Map<String,Jogador> jogadores;
 
   //resto das propriedades do jogo por definir
 
@@ -18,43 +19,100 @@ public class TripleSFootball {
     public TripleSFootball(){
       //construtor do estado do jogo inicial
       equipas= new HashMap<>();
-      //jogadores= new HashMap<>();
+      jogadores= new HashMap<>();
     }
-  public TripleSFootball(Map<String,List<Equipa>> lista){
+  public TripleSFootball(Map<String,Equipa> eqs, Map<String,Jogador> jogs) {
     //construtor do estado do jogo inicial
-        setEquipas(lista);
-
+        setEquipas(eqs);
+        setJogadores(jogs);
   }
   public TripleSFootball(TripleSFootball tsf){
     setEquipas(tsf.getEquipas());
+    setJogadores(tsf.getJogadores());
     }
 
-  public Map<String,List<Equipa>> getEquipas() {
-    //rever
-          return this.equipas;
+  public Map<String, Jogador> getJogadores() {
+    return jogadores.entrySet()
+            .stream()
+            .collect(Collectors.toMap(k->k.getKey(), v->v.getValue().clone()));
   }
 
+  public void setJogadores(Map<String, Jogador> jogs) {
+    this.jogadores = new HashMap<>();
+    jogadores= jogs.entrySet()
+            .stream()
+            .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
+    }
 
-  public void setEquipas(Map<String,List<Equipa>> lista) {
+  public Map<String,Equipa> getEquipas() {
+    //rever
+          return equipas.entrySet()
+            .stream()
+            .collect(Collectors.toMap(k->k.getKey(), v->v.getValue().clone()));
+  }
+
+  public void setEquipas(Map<String,Equipa> lista) {
     //rever
     equipas = new HashMap();
-    for (Map.Entry<String, List<Equipa>>
+    equipas =lista
+            .entrySet()
+            .stream()
+            .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
+    /*
+    for (Map.Entry<String, Equipa>
             l : lista.entrySet()) {
       List<Equipa> lista_aux =
               new ArrayList<>(l.getValue());
       equipas.put(l.getKey(), lista_aux);
-    }
+    }*/
   }
+  public boolean existeJogador(String j){
+      return jogadores.containsKey(j);
+  }
+  public boolean existeEquipa(String eq){
+      return equipas.containsKey(eq);
+  }
+  public Jogador getjogador(String j){
+      Jogador resp=null;
+      if(existeJogador(j)){
+        resp=jogadores.get(j).clone();
+      }
+      return resp;
+  }
+  public boolean existeJogadorNaEquipa(String j,String e){
+    boolean resp=false;
+    if(existeEquipa(e)&& existeJogador(j)){
+      if(equipas.values().contains(j))resp=true;
+    }
+    return resp;
+  }
+  public void adicionaJogNaEquipa(String j, String e){
+    if(!existeEquipa(e)) criaEquipa(e);
+    if(!existeJogadorNaEquipa(j,e)) equipas.get(e).add(getjogador(j));
+  }
+
+  public Equipa getEquipa(String eq){
+      Equipa resp;
+      if(existeEquipa(eq)){
+        resp=equipas.get(eq).clone();
+      }else resp=null;
+      return resp;
+  }
+
+    public void adicionaEquipa(Equipa eq){
+      equipas.put(eq.getNome(),eq.clone());
+    }
   //tambem criar equipa fantasma
-    public Equipa criaEquipa(){
+    public Equipa criaEquipa(String nome){
         //rever argumentos
-        Equipa e1= new Equipa();
+        Equipa e1= new Equipa(nome);
         //fazer algo
         return e1;
     }
   public Equipa criaEquipaFantasma(){
     Equipa e1= new Equipa();
     e1.setNome("fantasma");
+    //adiciona a equipa
     return e1;
   }
 
@@ -82,7 +140,6 @@ public class TripleSFootball {
       //acrescentar j a equipa fantasma
 
       return j;
-
     }
     public Jogador criaGuardaRedes(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, Double elas){
       List<String> h= new ArrayList<>();
@@ -93,7 +150,10 @@ public class TripleSFootball {
       return j;
     }
 
+
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
+      if(!hasRoom(quarto)) addRoom(quarto);
+      if(!roomHasDevice(quarto,s2)) divisions.get(quarto).add(s2);
        //usa os nomes para identificar os objetos Jogador j, Equipa eAntiga e Equipa eNova
        //procurar o jogador pelo nome
        //procurar equipas pelo nome

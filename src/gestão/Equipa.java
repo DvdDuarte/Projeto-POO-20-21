@@ -20,6 +20,14 @@ public class Equipa {
         this.reservas = new Jogador[7];
 
     }
+    public Equipa(String nome) {
+
+        setNome(nome);
+        this.jogadores = new ArrayList<Jogador>();
+        this.titulares = new Jogador[11];
+        this.reservas = new Jogador[7];
+
+    }
 
     public Equipa(String nome, List<Jogador> jogadores, Jogador[] titulares, Jogador[] reservas) {
 
@@ -101,4 +109,8 @@ public class Equipa {
     }
 
 
+    public void add(Jogador getjogador) {
+    //metodo que acrescenta um jogador a lista de jogadores do elenco da equipa
+
+    }
 }

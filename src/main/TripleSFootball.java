@@ -88,7 +88,7 @@ public class TripleSFootball {
   }
   public void adicionaJogNaEquipa(String j, String e){
     if(!existeEquipa(e)) criaEquipa(e);
-    if(!existeJogadorNaEquipa(j,e)) equipas.get(e).add(getjogador(j));
+    if(!existeJogadorNaEquipa(j,e)) equipas.get(e).addJogador(getjogador(j));
   }
 
   public Equipa getEquipa(String eq){

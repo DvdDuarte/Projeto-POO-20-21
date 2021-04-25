@@ -100,9 +100,7 @@ public class Equipa {
     }
 
 //rever!!!
-    public Equipa clone() throws CloneNotSupportedException {
-        
-        Equipa clone = (Equipa) super.clone();
+    public Equipa clone() {
 
         return new Equipa(this);
 

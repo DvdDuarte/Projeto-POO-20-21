@@ -14,7 +14,7 @@ public class Equipa {
 
     public Equipa() {
 
-        this.nome = "n/a";
+        this.nome = "";
         this.jogadores = new ArrayList<Jogador>();
         this.titulares = new Jogador[11];
         this.reservas = new Jogador[7];
@@ -107,8 +107,10 @@ public class Equipa {
     }
 
 
-    public void add(Jogador getjogador) {
-    //metodo que acrescenta um jogador a lista de jogadores do elenco da equipa
+    public void addJogador(Jogador jogador) {
+
+        this.jogadores.add(jogador);
 
     }
+
 }

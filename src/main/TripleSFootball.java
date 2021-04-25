@@ -150,7 +150,9 @@ public class TripleSFootball {
       return j;
     }
 
-
+//
+// !!!! Funçaõ contem informação de outro projeto !!!!
+//
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
       if(!hasRoom(quarto)) addRoom(quarto);
       if(!roomHasDevice(quarto,s2)) divisions.get(quarto).add(s2);

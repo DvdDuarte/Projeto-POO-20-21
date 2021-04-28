@@ -154,13 +154,11 @@ public class TripleSFootball {
 // !!!! Funçaõ contem informação de outro projeto !!!!
 //
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
-      if(!hasRoom(quarto)) addRoom(quarto);
-      if(!roomHasDevice(quarto,s2)) divisions.get(quarto).add(s2);
-       //usa os nomes para identificar os objetos Jogador j, Equipa eAntiga e Equipa eNova
-       //procurar o jogador pelo nome
-       //procurar equipas pelo nome
-       //retira jogador da lista de jogadores da equipa eAntiga
-       //acrescenta jogador a lista de jogadores da equipa eNova
+      if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
+      if(!equipas.get(nomeENova).equipaTemJogador(nomeJ)) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
+        //retira jogador da lista de jogadores da equipa eAntiga
+       equipas.get(nomeEVelha).removeJogador(nomeJ);
+        //acrescenta jogador a lista de jogadores da equipa eNova
        //acrescenta equipa eNova ao final do historial do jogador j
 
     }

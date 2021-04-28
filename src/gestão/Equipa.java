@@ -112,5 +112,12 @@ public class Equipa {
         this.jogadores.add(jogador);
 
     }
-
+    //
+    public void  removeJogador(String nomeJogador){
+        //remove jogador da equipa
+    }
+    public boolean equipaTemJogador(String nomeJ){
+        //equipa tem jogador? true or false
+        return false;
+    }
 }

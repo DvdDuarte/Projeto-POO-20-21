@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Jogador {
+
     private String nome;
     private int idade;
     private double velocidade;

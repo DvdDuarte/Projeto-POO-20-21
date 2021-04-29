@@ -103,7 +103,7 @@ public class Equipa {
     }
 
     public boolean equals(Object o) {
-
+//rever aqui, para ficar mais especifico
         if (this == o) {
 
             return true;

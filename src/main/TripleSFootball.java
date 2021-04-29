@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TripleSFootball {
-  private Map<String,Equipa> equipas;
- private Map<String,Jogador> jogadores;
+    private Map<String,Equipa> equipas;
+    private Map<String,Jogador> jogadores;
 
   //resto das propriedades do jogo por definir
 
@@ -21,12 +21,12 @@ public class TripleSFootball {
       equipas= new HashMap<>();
       jogadores= new HashMap<>();
     }
-  public TripleSFootball(Map<String,Equipa> eqs, Map<String,Jogador> jogs) {
+    public TripleSFootball(Map<String,Equipa> eqs, Map<String,Jogador> jogs) {
     //construtor do estado do jogo inicial
         setEquipas(eqs);
         setJogadores(jogs);
-  }
-  public TripleSFootball(TripleSFootball tsf){
+    }
+    public TripleSFootball(TripleSFootball tsf){
     setEquipas(tsf.getEquipas());
     setJogadores(tsf.getJogadores());
     }
@@ -100,11 +100,12 @@ public class TripleSFootball {
   }
 
     public void adicionaEquipa(Equipa eq){
-      equipas.put(eq.getNome(),eq.clone());
+        equipas.put(eq.getNome(),eq.clone());
     }
   //tambem criar equipa fantasma
     public Equipa criaEquipa(String nome){
         //rever argumentos
+        if(existeEquipa(nome)) return null;
         Equipa e1= new Equipa(nome);
         //fazer algo
         return e1;
@@ -118,6 +119,7 @@ public class TripleSFootball {
 
     public Jogador criaJogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, String posicao){
       //rever argumentos
+        if(existeJogador(n)) return null;
       List<String> h= new ArrayList<>();
       h.add("fantasma");
       Jogador j;
@@ -150,17 +152,16 @@ public class TripleSFootball {
       return j;
     }
 
-//
-// !!!! Funçaõ contem informação de outro projeto !!!!
-//
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
       if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
-      //if(!equipas.get(nomeENova).equipaTemJogador(nomeJ)) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
+      if(!equipas.get(nomeENova).equipaTemJogador(jogadores.get(nomeJ))) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
         //retira jogador da lista de jogadores da equipa eAntiga
-       //equipas.get(nomeEVelha).removeJogador(nomeJ);
+       equipas.get(nomeEVelha).removeJogador(jogadores.get(nomeJ));
         //acrescenta jogador a lista de jogadores da equipa eNova
-       //acrescenta equipa eNova ao final do historial do jogador j
+       equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
 
+       //acrescenta equipa eNova ao final do historial do jogador j
+        //jogadores.get(nomeJ).add2Historial(nomeENova);
     }
     public TripleSFootball clone(){
       return new TripleSFootball(this);
@@ -168,13 +169,13 @@ public class TripleSFootball {
 
     public void apagaJogador(String nomeJ){
         //usa o nome para identificar o objeto Jogador j
-
+        jogadores.remove(nomeJ);
 
         //caso jogador j esteja na equipa fantasma
     }
     public void apagaEquipa(String nomeE){
       //usa o nome para identificar o objeto Equipa E
-
+        equipas.remove(nomeE);
       //caso a Equipa E tenha sido criada pelo utilizador
     }
 

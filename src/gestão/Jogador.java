@@ -183,7 +183,7 @@ public class Jogador {
             this.historial.add(s);
         }
     }
-
+//public void add2Historial(String equipa){//adiciona a nova equipa ao historial de um jogador}
 
     public String toString() {
 

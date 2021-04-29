@@ -155,9 +155,9 @@ public class TripleSFootball {
 //
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
       if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
-      if(!equipas.get(nomeENova).equipaTemJogador(nomeJ)) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
+      //if(!equipas.get(nomeENova).equipaTemJogador(nomeJ)) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
         //retira jogador da lista de jogadores da equipa eAntiga
-       equipas.get(nomeEVelha).removeJogador(nomeJ);
+       //equipas.get(nomeEVelha).removeJogador(nomeJ);
         //acrescenta jogador a lista de jogadores da equipa eNova
        //acrescenta equipa eNova ao final do historial do jogador j
 

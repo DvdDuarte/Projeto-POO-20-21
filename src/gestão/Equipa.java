@@ -70,12 +70,12 @@ public class Equipa {
 
     }
 
-    public boolean equipaTemJogador(String nomeJogador){
+    public boolean equipaTemJogador(Jogador jogador){
 
 
         for (int i = 0; i < this.jogadores.size() ; i++) {
 
-            if (jogadores.get(i).getNome()==nomeJogador)
+            if (jogadores.get(i).equals(jogador))
 
                 return true;
         }
@@ -83,14 +83,13 @@ public class Equipa {
         return false;
     }
 
-    public void  removeJogador(String nomeJogador){
+    public void  removeJogador(Jogador jogador){
 
-        if(equipaTemJogador(nomeJogador)) {
+        if(equipaTemJogador(jogador)) {
 
-            for (int i = 0; i < this.jogadores.size() ; i++) {
+            for (int i = this.jogadores.size() - 1; i >= 0; i--) {
 
-                if (jogadores.get(i).getNome()==nomeJogador)
-                    jogadores.remove(i);
+                if (jogadores.get(i).equals(jogador)) jogadores.remove(i);
 
             }
         }
@@ -125,6 +124,18 @@ public class Equipa {
     }
 
 
+    // Definir após ser definida habilidade_jogador na classe Jogador
+    public int habilidade_Equipa (Equipa e) {
+
+        int tamanho_equipa = e.jogadores.size();
+
+      //  int habilidade_total_jogadores = ..... ;
+
+       // int habilidade_equipa = habilidade_total_jogadores / tamanho_equipa;
+
+     //   return habilidade_equipa;
+        return 0;
+    }
 
     public Equipa clone() {
 

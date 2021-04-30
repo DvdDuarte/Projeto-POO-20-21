@@ -161,7 +161,7 @@ public class TripleSFootball {
        equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
 
        //acrescenta equipa eNova ao final do historial do jogador j
-        //jogadores.get(nomeJ).add2Historial(nomeENova);
+        jogadores.get(nomeJ).addToHistorial(nomeENova);
     }
     public TripleSFootball clone(){
       return new TripleSFootball(this);

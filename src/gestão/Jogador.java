@@ -62,6 +62,9 @@ public class Jogador {
 
     }
 
+    public void addToHistorial(String nome){
+        this.historial.add(nome);
+    }
 
     public String getNome() {
 

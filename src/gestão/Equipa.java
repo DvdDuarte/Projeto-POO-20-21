@@ -2,23 +2,24 @@ package gestão;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Equipa {
 
     private String nome;
-    private ArrayList<Jogador> jogadores;
+    private List<Jogador> jogadores;
 
     public Equipa() {
 
         this.nome = "";
-        this.jogadores = new ArrayList<Jogador>();
+        this.jogadores = new ArrayList<>();
 
     }
     public Equipa(String nome) {
 
         setNome(nome);
-        this.jogadores = new ArrayList<Jogador>();
+        this.jogadores = new ArrayList<>();
 
     }
 
@@ -48,10 +49,9 @@ public class Equipa {
 
     }
 
-    public ArrayList<Jogador> getJogadores() {
+    public List<Jogador> getJogadores() {
 
-        return this.jogadores;
-
+        return this.jogadores.stream().map(j->j.clone()).collect(Collectors.toList());
     }
 
     public void setJogadores(List<Jogador> jogadores) {

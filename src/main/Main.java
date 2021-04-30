@@ -3,10 +3,9 @@ package main;
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
-import gestão.Avancado;
-import gestão.GuardaRedes;
-import gestão.Jogador;
+import gestão.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,6 +16,15 @@ public class Main {
         //TripleSFootball tsf = new TripleSFootball();
         Scanner in = new Scanner(System.in);
         int op = 0;
+
+        Equipa e = new Equipa();
+        Jogador j = new Jogador();
+        e.addJogador(j);
+
+        List<Jogador> jgs = e.getJogadores();
+
+        System.out.println(jgs.toString());
+
 /*
 lista de opcoes:
 criar equpipa fantasma(primeira equipa dos jogadores criados)

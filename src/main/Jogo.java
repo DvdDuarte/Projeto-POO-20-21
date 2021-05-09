@@ -1,10 +1,13 @@
 package main;
 
+import gestão.Jogador;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Jogo {
     private String equipaCasa;
@@ -32,7 +35,7 @@ public class Jogo {
         setEquipaCasa(getEquipaCasa());
         setEquipaFora(getEquipaFora());
         setGolosCasa(getGolosCasa());
-        setGolosFora((getGolosFora());
+        setGolosFora(getGolosFora());
         setDate(getDate());
         setJogadoresCasa(getJogadoresCasa());
         setJogadoresFora(getJogadoresFora());
@@ -84,9 +87,15 @@ public class Jogo {
     public void setSubstitucoesFora(Map<Integer, Integer> substitucoesFora) {
         this.substitucoesFora = substitucoesFora;
     }
+
     /*
     public boolean substituiJogador(int out, int in){
     }*/
+    public void alteraTitulares(Integer out,Integer in){
+        //
+        jogadoresCasa.remove(out);
+        jogadoresCasa.add(in);
+    }
 
     public static Jogo parse(String input){
         String[] campos = input.split(",");

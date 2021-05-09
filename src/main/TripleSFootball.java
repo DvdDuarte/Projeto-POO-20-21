@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 public class TripleSFootball {
     private Map<String,Equipa> equipas;
     private Map<String,Jogador> jogadores;
-
-  //resto das propriedades do jogo por definir
+    //private List<Jogo> jogos;
 
     public TripleSFootball(){
       //construtor do estado do jogo inicial
@@ -56,14 +55,7 @@ public class TripleSFootball {
             .entrySet()
             .stream()
             .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
-    /*
-    for (Map.Entry<String, Equipa>
-            l : lista.entrySet()) {
-      List<Equipa> lista_aux =
-              new ArrayList<>(l.getValue());
-      equipas.put(l.getKey(), lista_aux);
-    }*/
-  }
+    }
   public boolean existeJogador(String j){
       return jogadores.containsKey(j);
   }

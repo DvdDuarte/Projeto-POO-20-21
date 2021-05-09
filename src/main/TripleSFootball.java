@@ -14,8 +14,6 @@ public class TripleSFootball {
 
   //resto das propriedades do jogo por definir
 
-  //lista de equipas
-    //lista de jogadores
     public TripleSFootball(){
       //construtor do estado do jogo inicial
       equipas= new HashMap<>();

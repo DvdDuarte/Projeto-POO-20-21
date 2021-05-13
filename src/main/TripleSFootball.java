@@ -133,14 +133,6 @@ public class TripleSFootball {
 
       return j;
     }
-    public Jogador criaGuardaRedes(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, Double elas){
-      List<String> h= new ArrayList<>();
-      h.add("fantasma");
-      Jogador j=new GuardaRedes(n,i,vel,res,des,imp,jdc,rem,cdp,elas,h);
-      //acrescentar j a equipa fantasma
-
-      return j;
-    }
 
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
       if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
@@ -160,7 +152,6 @@ public class TripleSFootball {
     public void apagaJogador(String nomeJ){
         //usa o nome para identificar o objeto Jogador j
         jogadores.remove(nomeJ);
-
         //caso jogador j esteja na equipa fantasma
     }
     public void apagaEquipa(String nomeE){

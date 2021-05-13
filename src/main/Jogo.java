@@ -8,6 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+/*import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+ */
+
 
 public class Jogo {
     private String equipaCasa;
@@ -71,20 +78,30 @@ public class Jogo {
 //rever
     public List<Integer> getJogadoresFora() { return jogadoresFora; }
 //rever
-    public void setJogadoresFora(List<Integer> jogadoresFora) {
-        this.jogadoresFora = jogadoresFora;
+    public void setJogadoresFora(List<Integer> jogsFora) {
+        this.jogadoresFora = new ArrayList<>();
+        for (Integer i : jogsFora)
+            this.jogadoresFora.add(i);
     }
 //rever
-    public Map<Integer, Integer> getSubstituicoesCasa() { return substituicoesCasa; }
+    public Map<Integer, Integer> getSubstituicoesCasa() { return substituicoesCasa
+            .entrySet()
+            .stream()
+            .collect(Collectors.toMap(k->k.getKey(),v->v.getValue())); }
 //rever
     public void setSubstituicoesCasa(Map<Integer, Integer> substituicoesCasa) {
         this.substituicoesCasa = substituicoesCasa; }
-//rever
+
+
     public Map<Integer, Integer> getSubstitucoesFora() {
-        return substitucoesFora;
+
+        return substitucoesFora.entrySet()
+                .stream()
+                .collect(Collectors.toMap(k->k.getKey(), v->v.getValue()));
     }
 //rever
     public void setSubstitucoesFora(Map<Integer, Integer> substitucoesFora) {
+
         this.substitucoesFora = substitucoesFora;
     }
 

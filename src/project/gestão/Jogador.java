@@ -1,8 +1,7 @@
-package gestão;
+package project.gestão;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Jogador {
 
@@ -60,6 +59,12 @@ public class Jogador {
         this.capacidadeDePasse = j.getCapacidadeDePasse();
         this.historial = j.getHistorial();
 
+    }
+
+    public double calculaHabilidade(){
+            double res = 0;
+            res = (velocidade+resistencia+destreza+impulsao+jogoDeCabeca+remate+capacidadeDePasse)/7;
+        return res;
     }
 
     public void addToHistorial(String nome){

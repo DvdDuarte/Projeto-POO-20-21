@@ -1,4 +1,4 @@
-package gestão;
+package project.gestão;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,16 +125,19 @@ public class Equipa {
 
 
     // Definir após ser definida habilidade_jogador na classe Jogador
-    public int habilidade_Equipa (Equipa e) {
-
+    public double habilidade_Equipa (Equipa e) {
         int tamanho_equipa = e.jogadores.size();
 
-      //  int habilidade_total_jogadores = ..... ;
+        double sum = 0;
 
-       // int habilidade_equipa = habilidade_total_jogadores / tamanho_equipa;
+        for(Jogador j : jogadores){
+            sum += j.calculaHabilidade();
+        }
 
-     //   return habilidade_equipa;
-        return 0;
+        sum = sum/tamanho_equipa;
+
+
+        return sum;
     }
 
     public Equipa clone() {

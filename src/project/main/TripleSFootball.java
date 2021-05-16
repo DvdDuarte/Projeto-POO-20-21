@@ -1,6 +1,6 @@
-package main;
-import gestão.Jogador;
-import gestão.*;
+package project.main;
+import project.gestão.Jogador;
+import project.gestão.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -131,7 +131,7 @@ public class TripleSFootball {
           j = new Medio(n, i, vel, res, des, imp, jdc, rem, cdp, h);
           break;
         case "Avancado":
-          j = new Avancado(n, i, vel, res, des, imp, jdc, rem, cdp, h);
+          j = new Avancado(n, i, vel, res, des, imp, jdc, rem, cdp,h);
           break;
         case "Lateral":
           j = new Lateral(n, i, vel, res, des, imp, jdc, rem, cdp, h);

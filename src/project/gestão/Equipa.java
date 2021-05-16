@@ -124,6 +124,8 @@ public class Equipa {
     }
 
 
+    //Definir função que calcula o nive lde habilidade da equipa titular (ex: recebe lista de jogardores, soma os niveos de habilidade individuais e divide pelo total do array que deve ser 11 :) )
+
     // Definir após ser definida habilidade_jogador na classe Jogador
     public double habilidade_Equipa (Equipa e) {
         int tamanho_equipa = e.jogadores.size();

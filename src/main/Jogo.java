@@ -46,6 +46,7 @@ public class Jogo {
         substituicoesCasa = new HashMap<>(sc);
         substitucoesFora = new HashMap<>(sf);
     }
+
     public Jogo(Jogo j){
         setEquipaCasa(getEquipaCasa());
         setEquipaFora(getEquipaFora());
@@ -57,6 +58,24 @@ public class Jogo {
         setSubstituicoesCasa(getSubstituicoesCasa());
         setSubstitucoesFora(getSubstitucoesFora());
     }
+
+    /*
+    public Jogo calculaResultado(Jogo j){
+        1 - calcular habilidade dos 11's;
+        2 - calcular se marcam golo ou não;
+        3 - atualizar Jogo j;
+        4 - devolver Jogo j;
+    }
+     */
+
+    /*
+    public Jogo partida(Jogo j){
+        Jogo segundaParte = calculaResultado(j);
+        1 - Verificar substituições ( efetuar )
+        calculaResultado(segundaParte);
+        Devolve jogo finalizado;
+    }
+     */
 
     public String getEquipaCasa() { return equipaCasa; }
 

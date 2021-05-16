@@ -11,11 +11,8 @@ import java.util.stream.Collectors;
 public class TripleSFootball {
     private Map<String,Equipa> equipas;
     private Map<String,Jogador> jogadores;
+    //private List<Jogo> jogos;
 
-  //resto das propriedades do jogo por definir
-
-  //lista de equipas
-    //lista de jogadores
     public TripleSFootball(){
       //construtor do estado do jogo inicial
       equipas= new HashMap<>();
@@ -58,14 +55,7 @@ public class TripleSFootball {
             .entrySet()
             .stream()
             .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
-    /*
-    for (Map.Entry<String, Equipa>
-            l : lista.entrySet()) {
-      List<Equipa> lista_aux =
-              new ArrayList<>(l.getValue());
-      equipas.put(l.getKey(), lista_aux);
-    }*/
-  }
+    }
   public boolean existeJogador(String j){
       return jogadores.containsKey(j);
   }
@@ -143,14 +133,6 @@ public class TripleSFootball {
 
       return j;
     }
-    public Jogador criaGuardaRedes(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, Double elas){
-      List<String> h= new ArrayList<>();
-      h.add("fantasma");
-      Jogador j=new GuardaRedes(n,i,vel,res,des,imp,jdc,rem,cdp,elas,h);
-      //acrescentar j a equipa fantasma
-
-      return j;
-    }
 
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
       if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
@@ -170,7 +152,6 @@ public class TripleSFootball {
     public void apagaJogador(String nomeJ){
         //usa o nome para identificar o objeto Jogador j
         jogadores.remove(nomeJ);
-
         //caso jogador j esteja na equipa fantasma
     }
     public void apagaEquipa(String nomeE){
@@ -178,6 +159,9 @@ public class TripleSFootball {
         equipas.remove(nomeE);
       //caso a Equipa E tenha sido criada pelo utilizador
     }
-
+    public void play(){
+        //argumentos
+        Jogo j= new Jogo();
+    }
 
 }

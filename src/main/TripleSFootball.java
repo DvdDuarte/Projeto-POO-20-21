@@ -159,6 +159,9 @@ public class TripleSFootball {
         equipas.remove(nomeE);
       //caso a Equipa E tenha sido criada pelo utilizador
     }
-
+    public void play(){
+        //argumentos
+        Jogo j= new Jogo();
+    }
 
 }

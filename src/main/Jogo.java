@@ -27,6 +27,14 @@ public class Jogo {
     Map<Integer, Integer> substituicoesCasa = new HashMap<>();
     Map<Integer, Integer> substitucoesFora = new HashMap<>();
 
+    /*
+    public Jogo(String ec,String ef){
+        setEquipaCasa(ec);
+        setEquipaFora(ef);
+        setDate(date.withDayOfMonth(3));
+
+    }
+    */
     public Jogo (String ec, String ef, int gc, int gf, LocalDate d,  List<Integer> jc, Map<Integer, Integer> sc,  List<Integer> jf, Map<Integer, Integer> sf){
         equipaCasa = ec;
         equipaFora = ef;
@@ -145,6 +153,7 @@ public class Jogo {
         return  "Jogo:" + equipaCasa + " - " + equipaFora;
                 //+ " -> " + substituicoesCasa.toString()
                 //+ " -> " + substitucoesFora.toString();
-}
+    }
+
 
 }

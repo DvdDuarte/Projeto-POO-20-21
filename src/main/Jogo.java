@@ -97,7 +97,9 @@ public class Jogo {
 
     public void setDate(LocalDate date) { this.date = date; }
 //rever
-    public List<Integer> getJogadoresCasa() { return jogadoresCasa; }
+    public List<Integer> getJogadoresCasa() {
+        List<Integer> resp;
+        return jogadoresCasa; }
 //rever
     public void setJogadoresCasa(List<Integer> jogadoresCasa) {
         this.jogadoresCasa = jogadoresCasa;

@@ -1,27 +1,31 @@
-package project.main;
+package main;
 
 //David, arranja um nome melhor para o jogo melhor do que
 // Triple-S Football
 
-import project.gestão.*;
+import gestão.*;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
     //  Jogador j = new Jogador("olá",12, new ArrayList<>());
-        //TripleSFootball tsf = new TripleSFootball();
+        TripleSFootball tsf = new TripleSFootball();
         Scanner in = new Scanner(System.in);
         int op = 0;
 
-        TripleSFootball hey = new TripleSFootball();
 
-        Equipa e = new Equipa();
-        Lateral l = new Lateral();
-        e.addJogador(l);
+        Jogador j = new Jogador();
+        tsf.adicionaJogador(j);
+        tsf.criaEquipa("Realense FC");
+        tsf.transfereJogador(j.getNome(),"fantasma","Realense FC");
 
-        System.out.println(e.getJogadores().get(0).calculaHabilidade());
-;
+        List<Jogador> jgs = tsf.getEquipas().get("Realense FC").getJogadores();
+
+        System.out.println(jgs.toString());
 
 /*
 lista de opcoes:

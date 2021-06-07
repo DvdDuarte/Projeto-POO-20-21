@@ -1,4 +1,4 @@
-package project.gestão;
+package gestão;
 
 import java.util.List;
 

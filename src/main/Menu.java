@@ -14,6 +14,12 @@ public class Menu {
     /**
      * Constructor for objects of class Menu
      */
+    /*
+    public Menu(){
+        String[] aux={""};
+
+    }
+    */
     public Menu(String[] opcoes) {
         this.opcoes = Arrays.asList(opcoes);
         this.op = 0;

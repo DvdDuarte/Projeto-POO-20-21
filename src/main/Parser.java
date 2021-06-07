@@ -1,5 +1,4 @@
 package main;
-import gestão.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

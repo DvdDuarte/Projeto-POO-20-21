@@ -35,6 +35,19 @@ public class Jogo {
 
     }
     */
+
+    public Jogo(){
+        this.equipaCasa = "Chelsea";
+        this.equipaFora = "Manchester City";
+        this.golosCasa = 1;
+        this.golosFora = 0;
+        this.date = LocalDate.of(2021,5,29);
+        this.jogadoresCasa = new ArrayList<>();
+        this.jogadoresFora = new ArrayList<>();
+        this.substituicoesCasa = new HashMap<>();
+        this.substitucoesFora = new HashMap<>();
+    }
+
     public Jogo (String ec, String ef, int gc, int gf, LocalDate d,  List<Integer> jc, Map<Integer, Integer> sc,  List<Integer> jf, Map<Integer, Integer> sf){
         equipaCasa = ec;
         equipaFora = ef;

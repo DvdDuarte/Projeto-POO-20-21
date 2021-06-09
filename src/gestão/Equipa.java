@@ -36,6 +36,10 @@ public class Equipa {
 
     }
 
+    public static Equipa parse(String input){
+        String[] campos = input.split(",");
+        return new Equipa(campos[0]);
+    }
 
     public String getNome() {
 
@@ -127,8 +131,8 @@ public class Equipa {
     //Definir função que calcula o nive lde habilidade da equipa titular (ex: recebe lista de jogardores, soma os niveos de habilidade individuais e divide pelo total do array que deve ser 11 :) )
 
     // Definir após ser definida habilidade_jogador na classe Jogador
-    public double habilidade_Equipa (Equipa e) {
-        int tamanho_equipa = e.jogadores.size();
+    public double habilidade_Equipa () {
+        int tamanho_equipa = jogadores.size();
 
         double sum = 0;
 

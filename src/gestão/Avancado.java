@@ -11,33 +11,30 @@ public class Avancado extends Jogador {
     private final double pJogoDeCabeca = 0.13;
     private final double pRemate = 0.15;
     private final double pCapacidadeDePasse = 0.08;
-    private final double pDrible = 0.12;
-    private final double pInstinto = 0.15;
-
-    private double instinto;
-    private double drible;
 
 
     public Avancado() {
         super();
-        this.drible = 70;
     }
 
-    public Avancado(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, double drib, List<String> hist) {
-        super(n, i, vel, res, des, imp, jdc, rem, cdp, hist);
-        this.drible = drib;
+    public Avancado(String n, int nc, int vel, int res, int des, int imp, int jdc, int rem, int cdp) {
+        super(n, nc, vel, res, des, imp, jdc, rem, cdp);
+    }
+
+    public static Avancado parse(String input){
+        String[] campos = input.split(",");
+        return new Avancado(campos[0], Integer.parseInt(campos[1]),
+                Integer.parseInt(campos[2]),
+                Integer.parseInt(campos[3]),
+                Integer.parseInt(campos[4]),
+                Integer.parseInt(campos[5]),
+                Integer.parseInt(campos[6]),
+                Integer.parseInt(campos[7]),
+                Integer.parseInt(campos[8]));
     }
 
     public Avancado(Avancado a) {
         super(a);
-        this.drible = a.getDrible();
-    }
-    public double getDrible(){
-        return this.drible;
-    }
-
-    public double getPesoDrible(){
-        return this.pDrible;
     }
 
     public double getPesoVelocidade(){
@@ -70,7 +67,7 @@ public class Avancado extends Jogador {
 
     public double calculaHabilidade(){
         double habilidade;
-//Adicionar Drible
+
             habilidade = super.getRemate()*this.pRemate + super.getCapacidadeDePasse()*this.pCapacidadeDePasse
                     + super.getDestreza()*this.pDestreza + super.getImpulsao()*this.pImpulsao
                     + super.getJogoDeCabeca()*this.pJogoDeCabeca + super.getResistencia()*this.pResistencia
@@ -94,9 +91,7 @@ public class Avancado extends Jogador {
                 && a.getPesoImpulsao() == this.pImpulsao
                 && a.getPesoJogoDeCabeca() == this.pJogoDeCabeca
                 && a.getPesoRemate() == this.pRemate
-                && a.getPesoResistencia() == this.pResistencia
-                && a.getDrible() == this.drible
-                && a.getPesoDrible() == this.pDrible;
+                && a.getPesoResistencia() == this.pResistencia;
     }
 
     public Avancado clone() {

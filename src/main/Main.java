@@ -1,22 +1,29 @@
 package main;
 import gestão.*;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //  Jogador j = new Jogador("olá",12, new ArrayList<>());
         //TripleSFootball tsf = new TripleSFootball();
-        Scanner in = new Scanner(System.in);
-        int op = 0;
 
-        TripleSFootball hey = new TripleSFootball();
+    Parser p = new Parser();
 
-        Equipa e = new Equipa();
-        Lateral l = new Lateral();
-        e.addJogador(l);
+        try {
+            p.parse();
+        } catch (LinhaIncorretaException e) {
+            e.printStackTrace();
+        }
 
-        System.out.println(e.getJogadores().get(0).calculaHabilidade());
-        ;
+        TripleSFootball tsf = new TripleSFootball(p.getEquipas(),p.getJogadores());
+
+        tsf.transfereJogador("Eduardo Costa de Magalhaes","Sporting Club Chopin","Sporting Club Chopin");
+
+
+
 
 /*
 lista de opcoes:
@@ -120,3 +127,4 @@ criar equipaas e/ou jogadores, transferir joagdores, apagar jogadores e/ou equip
         }while(op != 0);
     */
     }
+}

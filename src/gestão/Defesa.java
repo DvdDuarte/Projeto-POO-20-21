@@ -11,23 +11,31 @@ public class Defesa extends Jogador {
     private final double pJogoDeCabeca = 0.13;
     private final double pRemate = 0.07;
     private final double pCapacidadeDePasse = 0.11;
-    private final double pCorte = 0.15;
-    private final double pMarcacao = 0.15;
 
-    private double corte;
-    private double marcacao;
 
 
     public Defesa() {
         super();
     }
 
-    public Defesa(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
-        super(n, i, vel, res, des, imp, jdc, rem, cdp, hist);
+    public Defesa(String n, int nc, int vel, int res, int des, int imp, int jdc, int rem, int cdp) {
+        super(n, nc, vel, res, des, imp, jdc, rem, cdp);
     }
 
     public Defesa(Defesa d) {
         super(d);
+    }
+
+    public static Defesa parse(String input){
+        String[] campos = input.split(",");
+        return new Defesa(campos[0], Integer.parseInt(campos[1]),
+                Integer.parseInt(campos[2]),
+                Integer.parseInt(campos[3]),
+                Integer.parseInt(campos[4]),
+                Integer.parseInt(campos[5]),
+                Integer.parseInt(campos[6]),
+                Integer.parseInt(campos[7]),
+                Integer.parseInt(campos[8]));
     }
 
     public double getPesoVelocidade(){
@@ -37,6 +45,7 @@ public class Defesa extends Jogador {
     public double getPesoResistencia(){
         return pResistencia;
     }
+
     public double getPesoDestreza(){
         return pDestreza;
     }

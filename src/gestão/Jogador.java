@@ -3,23 +3,22 @@ package gestão;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jogador {
+public abstract class Jogador {
 
     private String nome;
-    private int idade;
-    private double velocidade;
-    private double resistencia;
-    private double destreza;
-    private double impulsao;
-    private double jogoDeCabeca;
-    private double remate;
-    private double capacidadeDePasse;
+    private int camisola;
+    private int velocidade;
+    private int resistencia;
+    private int destreza;
+    private int impulsao;
+    private int jogoDeCabeca;
+    private int remate;
+    private int capacidadeDePasse;
     private List<String> historial;
 
     public Jogador() {
-
         this.nome = "Jogador";
-        this.idade = 20;
+        this.camisola = 20;
         this.velocidade = 70;
         this.resistencia = 70;
         this.destreza = 70;
@@ -28,13 +27,12 @@ public class Jogador {
         this.remate = 70;
         this.capacidadeDePasse = 70;
         this.historial = new ArrayList<>();
-
     }
 
-    public Jogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
+    public Jogador(String n, int camisola, int vel, int res, int des, int imp, int jdc, int rem, int cdp) {
 
         this.nome = n;
-        this.idade = i;
+        this.camisola = camisola;
         this.velocidade = vel;
         this.resistencia = res;
         this.destreza = des;
@@ -42,14 +40,14 @@ public class Jogador {
         this.jogoDeCabeca = jdc;
         this.remate = rem;
         this.capacidadeDePasse = cdp;
-        setHistorial(hist);
+        this.historial = new ArrayList<>();
 
     }
 
     public Jogador(Jogador j) {
 
         this.nome = j.getNome();
-        this.idade = j.getIdade();
+        this.camisola = j.getCamisola();
         this.velocidade = j.getVelocidade();
         this.resistencia = j.getResistencia();
         this.destreza = j.getDestreza();
@@ -61,53 +59,50 @@ public class Jogador {
 
     }
 
-    public double calculaHabilidade(){
-            double res = 0;
-            res = (velocidade+resistencia+destreza+impulsao+jogoDeCabeca+remate+capacidadeDePasse)/7;
-        return res;
-    }
+    public abstract double calculaHabilidade();
 
     public void addToHistorial(String nome){
         this.historial.add(nome);
     }
 
+    public int getCamisola(){
+        return this.camisola;
+    }
+
+    public void setCamisola(int n){
+        this.camisola = n;
+    }
     public String getNome() {
 
         return nome;
 
     }
 
-    public int getIdade() {
-
-        return idade;
-
-    }
-
-    public double getVelocidade() {
+    public int getVelocidade() {
 
         return velocidade;
 
     }
 
-    public double getResistencia() {
+    public int getResistencia() {
 
         return resistencia;
 
     }
 
-    public double getDestreza() {
+    public int getDestreza() {
 
         return destreza;
 
     }
 
-    public double getImpulsao() {
+    public int getImpulsao() {
 
         return impulsao;
 
     }
 
-    public double getJogoDeCabeca() {
+    public int getJogoDeCabeca() {
 
         return jogoDeCabeca;
 
@@ -119,13 +114,13 @@ public class Jogador {
 
     }
 
-    public double getRemate() {
+    public int getRemate() {
 
         return remate;
 
     }
 
-    public double getCapacidadeDePasse() {
+    public int getCapacidadeDePasse() {
 
         return capacidadeDePasse;
 
@@ -137,49 +132,44 @@ public class Jogador {
 
     }
 
-    public void setIdade(int idade) {
 
-        this.idade = idade;
-
-    }
-
-    public void setVelocidade(double velocidade) {
+    public void setVelocidade(int velocidade) {
 
         this.velocidade = velocidade;
 
     }
 
-    public void setResistencia(double resistencia) {
+    public void setResistencia(int resistencia) {
 
         this.resistencia = resistencia;
 
     }
 
-    public void setDestreza(double destreza) {
+    public void setDestreza(int destreza) {
 
         this.destreza = destreza;
 
     }
 
-    public void setImpulsao(double impulsao) {
+    public void setImpulsao(int impulsao) {
 
         this.impulsao = impulsao;
 
     }
 
-    public void setJogoDeCabeca(double jogoDeCabeca) {
+    public void setJogoDeCabeca(int jogoDeCabeca) {
 
         this.jogoDeCabeca = jogoDeCabeca;
 
     }
 
-    public void setRemate(double remate) {
+    public void setRemate(int remate) {
 
         this.remate = remate;
 
     }
 
-    public void setCapacidadeDePasse(double capacidadeDePasse) {
+    public void setCapacidadeDePasse(int capacidadeDePasse) {
 
         this.capacidadeDePasse = capacidadeDePasse;
 
@@ -196,7 +186,6 @@ public class Jogador {
     public String toString() {
 
         return "Nome :" + this.nome +
-                "\nIdade :" + this.idade +
                 "\nVelocidade :" + this.velocidade +
                 "\nResistencia :" + this.resistencia +
                 "\nDestreza :" + this.destreza +
@@ -224,17 +213,13 @@ public class Jogador {
 
         Jogador j = (Jogador) o;
 
-        return j.getNome() == this.nome && j.getIdade() == this.idade && j.getVelocidade() == this.velocidade &&
+        return j.getNome() == this.nome && j.getVelocidade() == this.velocidade &&
                 j.getDestreza() == this.destreza && j.getImpulsao() == this.impulsao && j.getJogoDeCabeca() == this.jogoDeCabeca &&
                 j.getResistencia() == this.resistencia && j.getRemate() == this.remate && j.getCapacidadeDePasse() == this.capacidadeDePasse &&
                 this.historial.equals(j.getHistorial());
 
     }
 
-    public Jogador clone(){
-
-        return new Jogador(this);
-
-    }
+    public abstract Jogador clone();
 
 }

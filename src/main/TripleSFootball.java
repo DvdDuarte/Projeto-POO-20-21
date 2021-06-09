@@ -1,5 +1,8 @@
 package main;
+
 import gestão.*;
+import gestão.Equipa;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,17 +46,21 @@ public class TripleSFootball {
         //rever
         return equipas.entrySet()
                 .stream()
-                .collect(Collectors.toMap(k->k.getKey(), v->v.getValue().clone()));
+                .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
     }
 
     public void setEquipas(Map<String,Equipa> lista) {
         //rever
-        equipas = new HashMap();
-        equipas =lista
+        this.equipas = new HashMap<>();
+
+        this.equipas = lista
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
+
+
     }
+
     public boolean existeJogador(String j){
         return jogadores.containsKey(j);
     }
@@ -88,7 +95,7 @@ public class TripleSFootball {
     }
 
     public void adicionaEquipa(Equipa eq){
-        equipas.put(eq.getNome(),eq.clone());
+        this.equipas.put(eq.getNome(),eq.clone());
     }
     //tambem criar equipa fantasma
     public Equipa criaEquipa(String nome){
@@ -133,15 +140,21 @@ public class TripleSFootball {
     }
 
     public void transfereJogador(String nomeJ,String nomeEVelha, String nomeENova){
-        if(!existeEquipa(nomeENova)) criaEquipa(nomeENova);
-        if(!equipas.get(nomeENova).equipaTemJogador(jogadores.get(nomeJ))) equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));;
-        //retira jogador da lista de jogadores da equipa eAntiga
-        equipas.get(nomeEVelha).removeJogador(jogadores.get(nomeJ));
-        //acrescenta jogador a lista de jogadores da equipa eNova
-        equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
-
-        //acrescenta equipa eNova ao final do historial do jogador j
-        jogadores.get(nomeJ).addToHistorial(nomeENova);
+        if(existeEquipa(nomeENova) && existeEquipa(nomeEVelha)) {
+            if (equipas.get(nomeENova).equipaTemJogador(jogadores.get(nomeJ))) {
+                System.out.println("O jogador já se encontra nesta equipa!");
+            }else{
+                    if(!equipas.get(nomeEVelha).equipaTemJogador(jogadores.get(nomeJ))){
+                        System.out.println("Jogador não existe na equipa origem!");
+                    }else{
+                        equipas.get(nomeEVelha).removeJogador(jogadores.get(nomeJ));
+                        equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
+                        jogadores.get(nomeJ).addToHistorial(nomeENova);
+                    }
+            }
+        }else{
+            System.out.println("Equipa não se encontra na base de dados!");
+        }
     }
     public TripleSFootball clone(){
         return new TripleSFootball(this);

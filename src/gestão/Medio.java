@@ -13,7 +13,7 @@ public class Medio extends Jogador {
     private final double pCapacidadeDePasse = 0.16;
     private final double pRecuperacao = 0.18;
 
-    private double recuperacao;
+    private int recuperacao;
 
 
 
@@ -44,7 +44,20 @@ public class Medio extends Jogador {
                 Integer.parseInt(campos[9]));
     }
 
-    public double getRecuperacao(){
+    public String jogadorParaLinha(){
+        return "Medio:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse()
+                +","+this.recuperacao;
+    }
+
+    public int getRecuperacao(){
         return this.recuperacao;
     }
 

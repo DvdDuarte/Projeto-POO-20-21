@@ -13,7 +13,7 @@ public class Lateral extends Jogador {
     private final double pCapacidadeDePasse = 0.14;
     private final double pCruzamento = 0.20;
 
-    private double cruzamento;
+    private int cruzamento;
 
 
     public Lateral() {
@@ -43,11 +43,24 @@ public class Lateral extends Jogador {
                 Integer.parseInt(campos[9]));
     }
 
+    public String jogadorParaLinha(){
+        return "Lateral:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse()
+                +","+this.cruzamento;
+    }
+
     public double getPesoCruzamento(){
         return this.pCruzamento;
     }
 
-    public double getCruzamento(){
+    public int getCruzamento(){
         return this.cruzamento;
     }
 

@@ -38,6 +38,18 @@ public class Defesa extends Jogador {
                 Integer.parseInt(campos[8]));
     }
 
+    public String jogadorParaLinha(){
+        return "Defesa:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse();
+    }
+
     public double getPesoVelocidade(){
         return pVelocidade;
     }

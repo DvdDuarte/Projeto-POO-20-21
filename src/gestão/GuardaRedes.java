@@ -31,6 +31,19 @@ public class GuardaRedes extends Jogador {
         this.elasticidade = gr.getElasticidade();
     }
 
+    public String jogadorParaLinha(){
+        return "Guarda-Redes:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse()
+                +","+this.elasticidade;
+    }
+
     public static GuardaRedes parse(String input){
         String[] campos = input.split(",");
         return new GuardaRedes(campos[0], Integer.parseInt(campos[1]),

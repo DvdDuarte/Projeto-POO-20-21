@@ -1,6 +1,7 @@
 package main;
 import gestão.*;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,8 +16,8 @@ public class Parser {
     public static Map<String, Jogador> jogadores = new HashMap<>(); //numero, jogador
     public static List<Jogo> jogos = new ArrayList<>();
 
-    public static void parse() throws LinhaIncorretaException {
-        List<String> linhas = lerFicheiro("output.txt");
+    public static void parse(String ficheiro) throws LinhaIncorretaException {
+        List<String> linhas = lerFicheiro(ficheiro);
 
         Equipa ultima = null; Jogador j = null;
         String[] linhaPartida;
@@ -114,11 +115,37 @@ public class Parser {
         return aux;
     }
 
+    public void escreverFicheiro(String nomeFicheiro) throws IOException{
+        FileWriter writer = new FileWriter(nomeFicheiro);
+        List<String> linhas = estadoParaLista();
+        for(String str: linhas) {
+            writer.write(str + System.lineSeparator());
+        }
+        writer.close();
+    }
+
+    public static List<String> estadoParaLista(){
+        List<String> aux = new ArrayList<>();
+
+            for(Map.Entry<String,Equipa> entry : equipas.entrySet()){
+                aux.add("Equipa:"+entry.getKey());
+                for(Jogador j : entry.getValue().getJogadores()){
+                    aux.add(j.jogadorParaLinha());
+                }
+            }
+
+            for(Jogo j : jogos){
+                aux.add(j.toString());
+            }
+
+        return aux;
+    }
+
     public static List<String> lerFicheiro(String nomeFich) {
         List<String> lines;
         try { lines = Files.readAllLines(Paths.get(nomeFich), StandardCharsets.UTF_8); }
         catch(IOException exc) {
-            System.out.println("Ficheiro não encontrado");
+            System.out.println("Ficheiro não encontrado!");
             lines = new ArrayList<>(); }
         return lines;
     }

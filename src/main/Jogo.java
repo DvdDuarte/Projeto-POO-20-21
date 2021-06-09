@@ -25,7 +25,7 @@ public class Jogo {
     private List<Integer> jogadoresCasa;
     private List<Integer> jogadoresFora;
     Map<Integer, Integer> substituicoesCasa = new HashMap<>();
-    Map<Integer, Integer> substitucoesFora = new HashMap<>();
+    Map<Integer, Integer> substituicoesFora = new HashMap<>();
 
     /*
     public Jogo(String ec,String ef){
@@ -45,7 +45,7 @@ public class Jogo {
         this.jogadoresCasa = new ArrayList<>();
         this.jogadoresFora = new ArrayList<>();
         this.substituicoesCasa = new HashMap<>();
-        this.substitucoesFora = new HashMap<>();
+        this.substituicoesFora = new HashMap<>();
     }
 
     public Jogo (String ec, String ef, int gc, int gf, LocalDate d,  List<Integer> jc, Map<Integer, Integer> sc,  List<Integer> jf, Map<Integer, Integer> sf){
@@ -54,22 +54,22 @@ public class Jogo {
         golosCasa = gc;
         golosFora = gf;
         date = d;
-        jogadoresCasa = new ArrayList<>(jc);
-        jogadoresFora = new ArrayList<>(jf);
-        substituicoesCasa = new HashMap<>(sc);
-        substitucoesFora = new HashMap<>(sf);
+        setJogadoresCasa(jc);
+        setJogadoresFora(jf);
+        setSubstituicoesCasa(sc);
+        setSubstitucoesFora(sf);
     }
 
     public Jogo(Jogo j){
-        setEquipaCasa(getEquipaCasa());
-        setEquipaFora(getEquipaFora());
-        setGolosCasa(getGolosCasa());
-        setGolosFora(getGolosFora());
-        setDate(getDate());
-        setJogadoresCasa(getJogadoresCasa());
-        setJogadoresFora(getJogadoresFora());
-        setSubstituicoesCasa(getSubstituicoesCasa());
-        setSubstitucoesFora(getSubstitucoesFora());
+        setEquipaCasa(j.getEquipaCasa());
+        setEquipaFora(j.getEquipaFora());
+        setGolosCasa(j.getGolosCasa());
+        setGolosFora(j.getGolosFora());
+        setDate(j.getDate());
+        setJogadoresCasa(j.getJogadoresCasa());
+        setJogadoresFora(j.getJogadoresFora());
+        setSubstituicoesCasa(j.getSubstituicoesCasa());
+        setSubstitucoesFora(j.getSubstitucoesFora());
     }
 
     /*
@@ -109,47 +109,56 @@ public class Jogo {
     public LocalDate getDate() { return date; }
 
     public void setDate(LocalDate date) { this.date = date; }
-//rever
+
     public List<Integer> getJogadoresCasa() {
         List<Integer> resp;
         return jogadoresCasa; }
-//rever
+
     public void setJogadoresCasa(List<Integer> jogadoresCasa) {
-        this.jogadoresCasa = jogadoresCasa;
+        this.jogadoresCasa = new ArrayList<>();
+
+        for(Integer i : jogadoresCasa){
+            this.jogadoresCasa.add(i);
+        }
     }
-//rever
+
     public List<Integer> getJogadoresFora() { return jogadoresFora; }
-//rever
+
     public void setJogadoresFora(List<Integer> jogsFora) {
         this.jogadoresFora = new ArrayList<>();
         for (Integer i : jogsFora)
             this.jogadoresFora.add(i);
     }
-//rever
+
     public Map<Integer, Integer> getSubstituicoesCasa() { return substituicoesCasa
             .entrySet()
             .stream()
             .collect(Collectors.toMap(k->k.getKey(),v->v.getValue())); }
-//rever
+
     public void setSubstituicoesCasa(Map<Integer, Integer> substituicoesCasa) {
-        this.substituicoesCasa = substituicoesCasa; }
+        this.substituicoesCasa = new HashMap<>();
+
+        for(Map.Entry<Integer,Integer> entry : substituicoesCasa.entrySet()){
+            this.substituicoesCasa.put(entry.getKey(),entry.getValue());
+        }
+    }
 
 
     public Map<Integer, Integer> getSubstitucoesFora() {
 
-        return substitucoesFora.entrySet()
+        return substituicoesFora.entrySet()
                 .stream()
                 .collect(Collectors.toMap(k->k.getKey(), v->v.getValue()));
     }
-//rever
-    public void setSubstitucoesFora(Map<Integer, Integer> substitucoesFora) {
 
-        this.substitucoesFora = substitucoesFora;
+    public void setSubstitucoesFora(Map<Integer, Integer> substituicoesFora) {
+        this.substituicoesFora = new HashMap<>();
+
+        for(Map.Entry<Integer,Integer> entry : substituicoesFora.entrySet()){
+            this.substituicoesFora.put(entry.getKey(),entry.getValue());
+        }
     }
 
-    /*
-    public boolean substituiJogador(int out, int in){
-    }*/
     public void alteraTitulares(Integer out,Integer in){
         //
         jogadoresCasa.remove(out);
@@ -182,11 +191,61 @@ public class Jogo {
                         jc, subsC, jf, subsF);
     }
 
+        public static List<String> substituicoesParaLinha(Map<Integer,Integer> subs){
+            List<String> aux = new ArrayList<>();
 
+            for(Map.Entry<Integer,Integer> entry : subs.entrySet()){
+                aux.add(entry.getKey()+"->"+entry.getValue());
+            }
+
+        return aux;
+        }
+
+        public static String auxString(List<String> subs){
+            StringBuilder sb = new StringBuilder();
+            for(String s : subs){
+                sb.append(","+s);
+            }
+            return sb.toString();
+        }
+//<EquipaCasa>,<EquipaFora>,<ScoreCasa>,<ScoreFora>,<Data>,<JogadoresCasa>,<SubstituicoesCasa>,<JogadoresFora>,<SubstituicoesFora>
     public String toString() {
-        return  "Jogo:" + equipaCasa + " - " + equipaFora;
+        return  "Jogo:"+equipaCasa
+                +","+equipaFora
+                +","+golosCasa
+                +","+golosFora
+                +","+date
+                +","+jogadoresCasa.get(0)
+                +","+jogadoresCasa.get(1)
+                +","+jogadoresCasa.get(2)
+                +","+jogadoresCasa.get(3)
+                +","+jogadoresCasa.get(4)
+                +","+jogadoresCasa.get(5)
+                +","+jogadoresCasa.get(6)
+                +","+jogadoresCasa.get(7)
+                +","+jogadoresCasa.get(8)
+                +","+jogadoresCasa.get(9)
+                +","+jogadoresCasa.get(10)
+                +auxString(substituicoesParaLinha(substituicoesCasa))
+                +","+jogadoresFora.get(0)
+                +","+jogadoresFora.get(1)
+                +","+jogadoresFora.get(2)
+                +","+jogadoresFora.get(3)
+                +","+jogadoresFora.get(4)
+                +","+jogadoresFora.get(5)
+                +","+jogadoresFora.get(6)
+                +","+jogadoresFora.get(7)
+                +","+jogadoresFora.get(8)
+                +","+jogadoresFora.get(9)
+                +","+jogadoresFora.get(10)
+                +auxString(substituicoesParaLinha(substituicoesFora));
+
                 //+ " -> " + substituicoesCasa.toString()
                 //+ " -> " + substitucoesFora.toString();
+    }
+
+    public Jogo clone(){
+        return new Jogo(this);
     }
 
 

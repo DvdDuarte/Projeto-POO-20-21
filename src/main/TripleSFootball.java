@@ -12,21 +12,22 @@ import java.util.stream.Collectors;
 public class TripleSFootball {
     private Map<String,Equipa> equipas;
     private Map<String,Jogador> jogadores;
-    //private List<Jogo> jogos;
+    private List<Jogo> jogos;
 
     public TripleSFootball(){
-        //construtor do estado do jogo inicial
         equipas= new HashMap<>();
         jogadores= new HashMap<>();
+        jogos = new ArrayList<>();
     }
-    public TripleSFootball(Map<String,Equipa> eqs, Map<String,Jogador> jogs) {
-        //construtor do estado do jogo inicial
+    public TripleSFootball(Map<String,Equipa> eqs, Map<String,Jogador> jogs, List<Jogo> jogos) {
         setEquipas(eqs);
         setJogadores(jogs);
+        setJogos(jogos);
     }
     public TripleSFootball(TripleSFootball tsf){
         setEquipas(tsf.getEquipas());
         setJogadores(tsf.getJogadores());
+        setJogos(tsf.getJogos());
     }
 
     public Map<String, Jogador> getJogadores() {
@@ -49,6 +50,10 @@ public class TripleSFootball {
                 .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
     }
 
+    public List<Jogo> getJogos(){
+        return jogos.stream().map(Jogo::clone).collect(Collectors.toList());
+    }
+
     public void setEquipas(Map<String,Equipa> lista) {
         //rever
         this.equipas = new HashMap<>();
@@ -59,6 +64,14 @@ public class TripleSFootball {
                 .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
 
 
+    }
+
+    public void setJogos(List<Jogo> jogos){
+        this.jogos = new ArrayList<>();
+
+        for(Jogo j : jogos){
+            this.jogos.add(j);
+        }
     }
 
     public boolean existeJogador(String j){

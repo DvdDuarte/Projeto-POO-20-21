@@ -59,6 +59,8 @@ public abstract class Jogador {
 
     }
 
+    public abstract String jogadorParaLinha();
+
     public abstract double calculaHabilidade();
 
     public void addToHistorial(String nome){

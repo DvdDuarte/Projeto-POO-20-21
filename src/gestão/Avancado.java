@@ -33,6 +33,18 @@ public class Avancado extends Jogador {
                 Integer.parseInt(campos[8]));
     }
 
+    public String jogadorParaLinha(){
+        return "Avancado:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse();
+    }
+
     public Avancado(Avancado a) {
         super(a);
     }

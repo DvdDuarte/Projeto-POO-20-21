@@ -5,8 +5,9 @@ import gestão.Jogador;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.util.*;
+
 
 public class UserInterface {
     Parser p;
@@ -68,19 +69,146 @@ public class UserInterface {
     }
 
     private void comecarJogo() {
-        Menu jogo = new Menu(new String[] {"Equipas","Jogadores","Constituição da Equipa","Transferir Jogador","Salvar Jogo","Recuar"});
+        Menu jogo = new Menu(new String[] {"Jogar","Equipas","Jogadores","Constituição da Equipa","Transferir Jogador","Salvar Jogo","Recuar"});
 
-        jogo.setHandler(1, this::listarEquipas);
+        jogo.setHandler(1, this::iniciarJogo);
 
-        jogo.setHandler(2, this::listarJogadores);
+        jogo.setHandler(2, this::listarEquipas);
 
-        jogo.setHandler(3, this::listarJogadoresEquipa);
+        jogo.setHandler(3, this::listarJogadores);
 
-        jogo.setHandler(4, this::transferirJogador);
+        jogo.setHandler(4, this::listarJogadoresEquipa);
 
-        jogo.setHandler(5, this::salvarJogo);
+        jogo.setHandler(5, this::transferirJogador);
+
+        jogo.setHandler(6, this::salvarJogo);
 
         jogo.run();
+    }
+
+
+    public void iniciarJogo() {
+        List<Jogador> jogadoresCasa = new ArrayList<>();
+        List<Jogador> jogadoresFora = new ArrayList<>();
+        List<Integer> jogadoresCasaInt = new ArrayList<>();
+        List<Integer> jogadoresForaInt = new ArrayList<>();
+        Map<Integer,Integer> subsCasa = new HashMap<>();
+        Map<Integer,Integer> subsFora = new HashMap<>();
+        int golosCasa = 0;
+        int golosFora = 0;
+        Equipa teamCasa = null;
+        Equipa teamFora = null;
+        Random rand = new Random();
+
+        listarEquipas();
+        System.out.println("Equipa casa");
+        String casa = scin.nextLine();
+        System.out.println("Equipa fora");
+        String fora = scin.nextLine();
+
+        if(this.tsf.getEquipas().containsKey(casa)){
+            teamCasa = this.tsf.getEquipa(casa);
+
+            for(Jogador j : teamCasa.getJogadores()){
+                System.out.println(j.getCamisola()+" - "+j.getNome());
+            }
+            System.out.println("Selecione 1 a 1 os 11 titulares!");
+            for(int i = 0; i < 11; i++){
+                int numero = scin.nextInt();
+                jogadoresCasa.add(teamCasa.getJogadorByNumber(numero));
+                jogadoresCasaInt.add(numero);
+            }
+        }
+
+        if(this.tsf.getEquipas().containsKey(fora)){
+            teamFora = this.tsf.getEquipa(fora);
+
+            for(Jogador j : teamFora.getJogadores()){
+                System.out.println(j.getCamisola()+" - "+j.getNome());
+            }
+            for(int i = 0; i < 11; i++){
+                int numero = scin.nextInt();
+                jogadoresFora.add(teamFora.getJogadorByNumber(numero));
+                jogadoresForaInt.add(numero);
+            }
+        }
+        scin.nextLine();
+        for(int i = 0;i<3;i++){
+            System.out.println("Substituição Casa "+(i+1)+":");
+            String subs = scin.nextLine();
+            subsCasa.put(Integer.parseInt(subs.split("->")[0]),Integer.parseInt(subs.split("->")[1]));
+        }
+
+        for(int i = 0;i<3;i++){
+            System.out.println("Substituição Fora "+(i+1)+":");
+            String subs = scin.nextLine();
+            subsFora.put(Integer.parseInt(subs.split("->")[0]),Integer.parseInt(subs.split("->")[1]));
+        }
+
+        if(calculaProbMarcar(jogadoresCasa,jogadoresFora) == 0){
+            golosCasa = rand.nextInt(5);
+            golosFora = rand.nextInt(2);
+        }else{
+            golosCasa = rand.nextInt(2);
+            golosFora = rand.nextInt(5);
+        }
+
+        for(Map.Entry<Integer,Integer> entry : subsCasa.entrySet()){
+            for(int i = 0; i < jogadoresCasa.size();i++){
+                if(jogadoresCasa.get(i).getCamisola() == entry.getKey()){
+                    jogadoresCasa.remove(i);
+                    jogadoresCasa.add(teamCasa.getJogadorByNumber(entry.getValue()));
+                    jogadoresCasaInt.remove(Integer.valueOf(entry.getKey()));
+                    jogadoresCasaInt.add(Integer.valueOf(entry.getValue()));
+                }
+            }
+        }
+
+        for(Map.Entry<Integer,Integer> entry : subsFora.entrySet()){
+            for(int i = 0; i < jogadoresFora.size();i++){
+                if(jogadoresFora.get(i).getCamisola() == entry.getKey()){
+                    jogadoresFora.remove(i);
+                    jogadoresFora.add(teamFora.getJogadorByNumber(entry.getValue()));
+                    jogadoresForaInt.remove(Integer.valueOf(entry.getKey()));
+                    jogadoresForaInt.add(Integer.valueOf(entry.getValue()));
+                }
+            }
+        }
+
+        if(calculaProbMarcar(jogadoresCasa,jogadoresFora) == 0){
+            golosCasa += rand.nextInt(5);
+            golosFora += rand.nextInt(2);
+        }else{
+            golosCasa += rand.nextInt(2);
+            golosFora += rand.nextInt(5);
+        }
+
+        LocalDate data = LocalDate.now();
+
+        Jogo j = new Jogo(teamCasa.getNome(),teamFora.getNome(),golosCasa,golosFora,data,jogadoresCasaInt,subsCasa,jogadoresForaInt,subsFora);
+        tsf.adicionarJogo(j);
+    }
+
+    public int calculaProbMarcar(List<Jogador> eCasa,List<Jogador> eFora){
+        int resp = 0;
+        double habCasa = 0;
+        double habFora = 0;
+
+        for(Jogador j : eCasa){
+            habCasa += j.calculaHabilidade();
+        }
+        habCasa = habCasa/11;
+
+        for(Jogador j : eFora){
+            habFora += j.calculaHabilidade();
+        }
+        habFora = habFora/11;
+
+        if(habCasa < habFora){
+            resp = 1;
+        }
+
+        return resp;
     }
 
     public void listarEquipas(){
@@ -88,7 +216,6 @@ public class UserInterface {
         for(Map.Entry<String,Equipa> entry : equipas.entrySet()){
             System.out.println(entry.getKey());
         }
-        scin.nextLine();
     }
 
     public void listarJogadores(){
@@ -96,22 +223,20 @@ public class UserInterface {
         for(Map.Entry<String,Jogador> entry : jogadores.entrySet()){
             System.out.println(entry.getKey());
         }
-        scin.nextLine();
     }
 
     public void listarJogadoresEquipa(){
-        System.out.println("Equipa a listar: ");
+        System.out.println("Equipa: ");
         String equipa = scin.nextLine();
 
         if(this.tsf.getEquipas().containsKey(equipa)){
             Equipa team = this.tsf.getEquipa(equipa);
 
-                    for(Jogador j : team.getJogadores()){
-                        System.out.println(j.getNome());
-                    }
+            for(Jogador j : team.getJogadores()){
+                System.out.println(j.getCamisola()+" - "+j.getNome());
+            }
         }
         else System.out.println("Equipa não se encontra na base de dados!");
-        scin.nextLine();
     }
 
     public void transferirJogador(){
@@ -121,8 +246,6 @@ public class UserInterface {
         String equipaDestino = scin.nextLine();
 
         this.tsf.transfereJogador(jogador,equipaDestino);
-
-        scin.nextLine();
     }
 
     public void salvarJogo(){
@@ -134,7 +257,5 @@ public class UserInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        scin.nextLine();
     }
 }

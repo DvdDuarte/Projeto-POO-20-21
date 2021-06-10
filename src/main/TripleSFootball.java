@@ -36,6 +36,10 @@ public class TripleSFootball {
                 .collect(Collectors.toMap(k->k.getKey(), v->v.getValue().clone()));
     }
 
+    public void adicionarJogo(Jogo j){
+        this.jogos.add(j);
+    }
+
     public void setJogadores(Map<String, Jogador> jogs) {
         this.jogadores = new HashMap<>();
         jogadores= jogs.entrySet()
@@ -167,6 +171,11 @@ public class TripleSFootball {
             System.out.println("A equipa destino não se encontra na base de dados!");
         }
     }
+
+    //public Jogo calculaResultado(List<Jogador> equipaCasa, List<Jogador> equipaFora){
+
+    //}
+
     public TripleSFootball clone(){
         return new TripleSFootball(this);
     }
@@ -180,10 +189,6 @@ public class TripleSFootball {
         //usa o nome para identificar o objeto Equipa E
         equipas.remove(nomeE);
         //caso a Equipa E tenha sido criada pelo utilizador
-    }
-    public void play(){
-        //argumentos
-        Jogo j= new Jogo();
     }
 
 }

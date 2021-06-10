@@ -74,6 +74,15 @@ public class Equipa {
 
     }
 
+    public Jogador getJogadorByNumber(int number){
+        for(Jogador j : jogadores){
+            if(j.getCamisola() == number){
+                return j;
+            }
+        }
+        return null;
+    }
+
     public boolean equipaTemJogador(Jogador jogador){
 
 

@@ -134,7 +134,7 @@ public class Parser {
                 }
             }
 
-            for(Jogo j : jogos){
+            for(Jogo j : tsf.getJogos()){
                 aux.add(j.toString());
             }
 

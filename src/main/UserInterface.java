@@ -257,7 +257,7 @@ public class UserInterface {
 
         if(this.tsf.getEquipas().containsKey(casa)){
             teamCasa = this.tsf.getEquipa(casa);
-
+            System.out.println("Equipa casa: "+teamCasa.getNome());
             for(Jogador j : teamCasa.getJogadores()){
                 System.out.println(j.getCamisola()+" - "+j.getNome());
             }
@@ -271,7 +271,7 @@ public class UserInterface {
 
         if(this.tsf.getEquipas().containsKey(fora)){
             teamFora = this.tsf.getEquipa(fora);
-
+            System.out.println("Equipa fora: "+teamFora.getNome());
             for(Jogador j : teamFora.getJogadores()){
                 System.out.println(j.getCamisola()+" - "+j.getNome());
             }
@@ -281,7 +281,7 @@ public class UserInterface {
                 jogadoresForaInt.add(numero);
             }
         }
-        scin.nextLine();
+        scin.nextLine();//nao chego aqui
         for(int i = 0;i<3;i++){
             System.out.println("Substituição Casa "+(i+1)+":");
             String subs = scin.nextLine();

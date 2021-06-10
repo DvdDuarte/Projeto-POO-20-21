@@ -4,25 +4,64 @@ import java.util.List;
 
 public class Lateral extends Jogador {
 
-    private final double pVelocidade = 0.2;
-    private final double pResistencia = 0.2;
-    private final double pDestreza = 0.1;
-    private final double pImpulsao = 0.1;
-    private final double pJogoDeCabeca = 0.1;
+    private final double pVelocidade = 0.14;
+    private final double pResistencia = 0.14;
+    private final double pDestreza = 0.14;
+    private final double pImpulsao = 0.07;
+    private final double pJogoDeCabeca = 0.07;
     private final double pRemate = 0.1;
-    private final double pCapacidadeDePasse = 0.2;
+    private final double pCapacidadeDePasse = 0.14;
+    private final double pCruzamento = 0.20;
+
+    private int cruzamento;
 
 
     public Lateral() {
         super();
     }
 
-    public Lateral(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
-        super(n, i, vel, res, des, imp, jdc, rem, cdp, hist);
+    public Lateral(String n, int nc, int vel, int res, int des, int imp, int jdc, int rem, int cdp, int cruz) {
+        super(n, nc, vel, res, des, imp, jdc, rem, cdp);
+        this.cruzamento = cruz;
     }
 
     public Lateral(Lateral l) {
         super(l);
+        this.cruzamento = l.getCruzamento();
+    }
+
+    public static Lateral parse(String input){
+        String[] campos = input.split(",");
+        return new Lateral(campos[0], Integer.parseInt(campos[1]),
+                Integer.parseInt(campos[2]),
+                Integer.parseInt(campos[3]),
+                Integer.parseInt(campos[4]),
+                Integer.parseInt(campos[5]),
+                Integer.parseInt(campos[6]),
+                Integer.parseInt(campos[7]),
+                Integer.parseInt(campos[8]),
+                Integer.parseInt(campos[9]));
+    }
+
+    public String jogadorParaLinha(){
+        return "Lateral:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse()
+                +","+this.cruzamento;
+    }
+
+    public double getPesoCruzamento(){
+        return this.pCruzamento;
+    }
+
+    public int getCruzamento(){
+        return this.cruzamento;
     }
 
     public double getPesoVelocidade(){
@@ -32,6 +71,7 @@ public class Lateral extends Jogador {
     public double getPesoResistencia(){
         return pResistencia;
     }
+
     public double getPesoDestreza(){
         return pDestreza;
     }
@@ -53,7 +93,7 @@ public class Lateral extends Jogador {
     }
 
     public double calculaHabilidade(){
-        double habilidade;
+        double habilidade = 0;
 
         habilidade = super.getRemate()*this.pRemate + super.getCapacidadeDePasse()*this.pCapacidadeDePasse
                 + super.getDestreza()*this.pDestreza + super.getImpulsao()*this.pImpulsao
@@ -64,7 +104,7 @@ public class Lateral extends Jogador {
     }
 
     public String toString() {
-        return super.toString();
+        return super.toString()+"\nCruzamento: "+this.cruzamento+"\n";
     }
 
     public boolean equals(Object o) {
@@ -78,7 +118,9 @@ public class Lateral extends Jogador {
                 && l.getPesoImpulsao() == this.pImpulsao
                 && l.getPesoJogoDeCabeca() == this.pJogoDeCabeca
                 && l.getPesoRemate() == this.pRemate
-                && l.getPesoResistencia() == this.pResistencia;
+                && l.getPesoResistencia() == this.pResistencia
+                && l.getCruzamento() == this.cruzamento
+                && l.getPesoCruzamento() == this.pCruzamento;
     }
 
     public Lateral clone() {

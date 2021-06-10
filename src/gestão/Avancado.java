@@ -4,21 +4,45 @@ import java.util.List;
 
 public class Avancado extends Jogador {
 
-    private final double pVelocidade = 0.2;
-    private final double pResistencia = 0.1;
-    private final double pDestreza = 0.1;
-    private final double pImpulsao = 0.2;
-    private final double pJogoDeCabeca = 0.1;
-    private final double pRemate = 0.2;
-    private final double pCapacidadeDePasse = 0.1;
+    private final double pVelocidade = 0.11;
+    private final double pResistencia = 0.08;
+    private final double pDestreza = 0.08;
+    private final double pImpulsao = 0.1;
+    private final double pJogoDeCabeca = 0.13;
+    private final double pRemate = 0.15;
+    private final double pCapacidadeDePasse = 0.08;
 
 
     public Avancado() {
         super();
     }
 
-    public Avancado(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, List<String> hist) {
-        super(n, i, vel, res, des, imp, jdc, rem, cdp, hist);
+    public Avancado(String n, int nc, int vel, int res, int des, int imp, int jdc, int rem, int cdp) {
+        super(n, nc, vel, res, des, imp, jdc, rem, cdp);
+    }
+
+    public static Avancado parse(String input){
+        String[] campos = input.split(",");
+        return new Avancado(campos[0], Integer.parseInt(campos[1]),
+                Integer.parseInt(campos[2]),
+                Integer.parseInt(campos[3]),
+                Integer.parseInt(campos[4]),
+                Integer.parseInt(campos[5]),
+                Integer.parseInt(campos[6]),
+                Integer.parseInt(campos[7]),
+                Integer.parseInt(campos[8]));
+    }
+
+    public String jogadorParaLinha(){
+        return "Avancado:"+getNome()
+                +","+getCamisola()
+                +","+getVelocidade()
+                +","+getResistencia()
+                +","+getDestreza()
+                +","+getImpulsao()
+                +","+getJogoDeCabeca()
+                +","+getRemate()
+                +","+getCapacidadeDePasse();
     }
 
     public Avancado(Avancado a) {

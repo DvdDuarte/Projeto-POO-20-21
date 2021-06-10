@@ -30,6 +30,10 @@ public class TripleSFootball {
         setJogos(tsf.getJogos());
     }
 
+    public void addJogador(Jogador j){
+        jogadores.put(j.getNome(),j);
+    }
+
     public Map<String, Jogador> getJogadores() {
         return jogadores.entrySet()
                 .stream()
@@ -48,7 +52,7 @@ public class TripleSFootball {
     }
 
     public Map<String,Equipa> getEquipas() {
-        //rever
+
         return equipas.entrySet()
                 .stream()
                 .collect(Collectors.toMap(k->k.getKey(),v->v.getValue().clone()));
@@ -59,7 +63,7 @@ public class TripleSFootball {
     }
 
     public void setEquipas(Map<String,Equipa> lista) {
-        //rever
+
         this.equipas = new HashMap<>();
 
         this.equipas = lista
@@ -98,10 +102,6 @@ public class TripleSFootball {
         }
         return resp;
     }
-    public void adicionaJogNaEquipa(String j, String e){
-        if(!existeEquipa(e)) criaEquipa(e);
-        if(!existeJogadorNaEquipa(j,e)) equipas.get(e).addJogador(getjogador(j));
-    }
 
     public Equipa getEquipa(String eq){
         Equipa resp;
@@ -114,67 +114,28 @@ public class TripleSFootball {
     public void adicionaEquipa(Equipa eq){
         this.equipas.put(eq.getNome(),eq.clone());
     }
-    //tambem criar equipa fantasma
-    public Equipa criaEquipa(String nome){
-        //rever argumentos
-        if(existeEquipa(nome)) return null;
-        Equipa e1= new Equipa(nome);
-        //fazer algo
-        return e1;
-    }
-    public Equipa criaEquipaFantasma(){
-        Equipa e1= new Equipa();
-        e1.setNome("fantasma");
-        //adiciona a equipa
-        return e1;
-    }
-
-    public Jogador criaJogador(String n, int i, double vel, double res, double des, double imp, double jdc, double rem, double cdp, String posicao){
-        //rever argumentos
-        if(existeJogador(n)) return null;
-        List<String> h= new ArrayList<>();
-        h.add("fantasma");
-        Jogador j;
-        switch (posicao) {
-            case "Defesa":
-                j = new Defesa();//Defesa(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-                break;
-            case "Medio":
-                j = new Medio();//new Medio(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-                break;
-            case "Avancado":
-                j = new Avancado();//new Avancado(n, i, vel, res, des, imp, jdc, rem, cdp,h);
-                break;
-            case "Lateral":
-                j = new Lateral();//Lateral(n, i, vel, res, des, imp, jdc, rem, cdp, h);
-                break;
-            default:
-                return null;
-        }
-        //acrescentar j a equipa fantasma
-
-        return j;
-    }
 
     public void transfereJogador(String nomeJ, String nomeENova){
         if(existeEquipa(nomeENova)) {
             if (equipas.get(nomeENova).equipaTemJogador(jogadores.get(nomeJ))) {
                 System.out.println("O jogador já se encontra nesta equipa!");
             }else{
-                String equipaVelha = jogadores.get(nomeJ).getHistorial().get(jogadores.get(nomeJ).getHistorial().size()-1);
-                equipas.get(equipaVelha).removeJogador(jogadores.get(nomeJ));
-                equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
-                jogadores.get(nomeJ).addToHistorial(nomeENova);
-                System.out.println("Transferencia efetuada com sucesso!");
+                if(jogadores.get(nomeJ).getHistorial().size()>0) {
+                    String equipaVelha = jogadores.get(nomeJ).getHistorial().get(jogadores.get(nomeJ).getHistorial().size() - 1);
+                    equipas.get(equipaVelha).removeJogador(jogadores.get(nomeJ));
+                    equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
+                    jogadores.get(nomeJ).addToHistorial(nomeENova);
+                    System.out.println("Transferencia efetuada com sucesso!");
+                }else{
+                    equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
+                    jogadores.get(nomeJ).addToHistorial(nomeENova);
+                    System.out.println("Transferencia efetuada com sucesso!");
                 }
-            }else{
+            }
+        }else{
             System.out.println("A equipa destino não se encontra na base de dados!");
         }
     }
-
-    //public Jogo calculaResultado(List<Jogador> equipaCasa, List<Jogador> equipaFora){
-
-    //}
 
     public TripleSFootball clone(){
         return new TripleSFootball(this);

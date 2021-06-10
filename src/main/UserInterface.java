@@ -1,7 +1,8 @@
 package main;
 
 import gestão.Equipa;
-import gestão.Jogador;
+import gestão.GuardaRedes;
+import gestão.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class UserInterface {
     }
 
     private void comecarJogo() {
-        Menu jogo = new Menu(new String[] {"Jogar","Equipas","Jogadores","Constituição da Equipa","Transferir Jogador","Salvar Jogo","Recuar"});
+        Menu jogo = new Menu(new String[] {"Jogar","Equipas","Jogadores","Constituição da Equipa","Transferir Jogador","Criar Jogador","Criar Equipa","Salvar Jogo","Recuar"});
 
         jogo.setHandler(1, this::iniciarJogo);
 
@@ -81,11 +82,159 @@ public class UserInterface {
 
         jogo.setHandler(5, this::transferirJogador);
 
-        jogo.setHandler(6, this::salvarJogo);
+        jogo.setHandler(6, this::criarJogador);
+
+        jogo.setHandler(7, this::criarEquipa);
+
+        jogo.setHandler(8, this::salvarJogo);
 
         jogo.run();
     }
 
+    public void criarJogador(){
+        System.out.println("Nome do jogador: ");
+        String nome = scin.nextLine();
+
+        if(tsf.getJogadores().containsKey(nome)){
+            System.out.println("Jogador já existente!");
+        }else {
+
+            System.out.println("Posição:\nGuarda-Redes || Defesa || Lateral || Medio || Avancado");
+            String posicao = scin.nextLine();
+
+            switch (posicao) {
+                case "Guarda-Redes":
+                    criaGuardaRedes(nome);
+                    break;
+                case "Medio":
+                    criaMedio(nome);
+                    break;
+                case "Lateral":
+                    criaLateral(nome);
+                    break;
+                default:
+                    if (posicao.equals("Defesa") || posicao.equals("Avancado")) {
+                        criaJogadorElse(nome, posicao);
+                    } else {
+                        System.out.println("Posição não reconhecida!");
+                    }
+            }
+            scin.nextLine();
+        }
+    }
+
+    public void criaGuardaRedes(String nome){
+        System.out.println("Número: ");
+        int numero = scin.nextInt();
+        System.out.println(("Velocidade: "));
+        int velocidade = scin.nextInt();
+        System.out.println("Resistência: ");
+        int resistencia = scin.nextInt();
+        System.out.println("Destreza: ");
+        int destreza = scin.nextInt();
+        System.out.println("Impulsão: ");
+        int impulsao = scin.nextInt();
+        System.out.println("Jogo de Cabeça: ");
+        int jogoDeCabeca = scin.nextInt();
+        System.out.println("Remate: ");
+        int remate = scin.nextInt();
+        System.out.println("Capacidade de Passe: ");
+        int capacidadeDePasse = scin.nextInt();
+        System.out.println("Elasticidade: ");
+        int elasticidade = scin.nextInt();
+
+        Jogador j = new GuardaRedes(nome,numero,velocidade,resistencia,destreza,impulsao,jogoDeCabeca,remate,capacidadeDePasse,elasticidade);
+        tsf.addJogador(j);
+    }
+
+    public void criaMedio(String nome){
+        System.out.println("Número: ");
+        int numero = scin.nextInt();
+        System.out.println(("Velocidade: "));
+        int velocidade = scin.nextInt();
+        System.out.println("Resistência: ");
+        int resistencia = scin.nextInt();
+        System.out.println("Destreza: ");
+        int destreza = scin.nextInt();
+        System.out.println("Impulsão: ");
+        int impulsao = scin.nextInt();
+        System.out.println("Jogo de Cabeça: ");
+        int jogoDeCabeca = scin.nextInt();
+        System.out.println("Remate: ");
+        int remate = scin.nextInt();
+        System.out.println("Capacidade de Passe: ");
+        int capacidadeDePasse = scin.nextInt();
+        System.out.println("Recuperação: ");
+        int recuperacao = scin.nextInt();
+
+        Jogador j = new Medio(nome,numero,velocidade,resistencia,destreza,impulsao,jogoDeCabeca,remate,capacidadeDePasse,recuperacao);
+        tsf.addJogador(j);
+    }
+
+    public void criaLateral(String nome){
+        System.out.println("Número: ");
+        int numero = scin.nextInt();
+        System.out.println(("Velocidade: "));
+        int velocidade = scin.nextInt();
+        System.out.println("Resistência: ");
+        int resistencia = scin.nextInt();
+        System.out.println("Destreza: ");
+        int destreza = scin.nextInt();
+        System.out.println("Impulsão: ");
+        int impulsao = scin.nextInt();
+        System.out.println("Jogo de Cabeça: ");
+        int jogoDeCabeca = scin.nextInt();
+        System.out.println("Remate: ");
+        int remate = scin.nextInt();
+        System.out.println("Capacidade de Passe: ");
+        int capacidadeDePasse = scin.nextInt();
+        System.out.println("Cruzamento: ");
+        int cruzamento = scin.nextInt();
+
+        Jogador j = new Lateral(nome,numero,velocidade,resistencia,destreza,impulsao,jogoDeCabeca,remate,capacidadeDePasse,cruzamento);
+        tsf.addJogador(j);
+    }
+
+    public void criaJogadorElse(String nome,String posicao){
+        System.out.println("Número: ");
+        int numero = scin.nextInt();
+        System.out.println(("Velocidade: "));
+        int velocidade = scin.nextInt();
+        System.out.println("Resistência: ");
+        int resistencia = scin.nextInt();
+        System.out.println("Destreza: ");
+        int destreza = scin.nextInt();
+        System.out.println("Impulsão: ");
+        int impulsao = scin.nextInt();
+        System.out.println("Jogo de Cabeça: ");
+        int jogoDeCabeca = scin.nextInt();
+        System.out.println("Remate: ");
+        int remate = scin.nextInt();
+        System.out.println("Capacidade de Passe: ");
+        int capacidadeDePasse = scin.nextInt();
+
+        if(posicao.equals("Avancado")) {
+            Jogador j = new Avancado(nome, numero, velocidade, resistencia, destreza, impulsao, jogoDeCabeca, remate, capacidadeDePasse);
+            tsf.addJogador(j);
+        }else{
+            Jogador j = new Defesa(nome, numero, velocidade, resistencia, destreza, impulsao, jogoDeCabeca, remate, capacidadeDePasse);
+            tsf.addJogador(j);
+        }
+
+
+    }
+
+    public void criarEquipa(){
+        System.out.println("Nome da equipa: ");
+        String nome = scin.nextLine();
+
+        if(tsf.existeEquipa(nome)){
+            System.out.println("Nome já existe na base de dados!");
+        }else{
+            Equipa e = new Equipa(nome);
+            tsf.adicionaEquipa(e);
+        }
+    }
 
     public void iniciarJogo() {
         List<Jogador> jogadoresCasa = new ArrayList<>();

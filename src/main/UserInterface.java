@@ -378,7 +378,7 @@ public class UserInterface {
         System.out.println("Equipa: ");
         String equipa = scin.nextLine();
 
-        if(this.tsf.getEquipas().containsKey(equipa)){
+        if(this.tsf.existeEquipa(equipa)){
             Equipa team = this.tsf.getEquipa(equipa);
 
             for(Jogador j : team.getJogadores()){

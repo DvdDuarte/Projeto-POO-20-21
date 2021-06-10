@@ -82,11 +82,9 @@ public class TripleSFootball {
         }
     }
 
-    public boolean existeJogador(String j){
-        return jogadores.containsKey(j);
+    public boolean existeJogador(String j){ return getJogadores().containsKey(j);//return jogadores.containsKey(j);
     }
-    public boolean existeEquipa(String eq){
-        return equipas.containsKey(eq);
+    public boolean existeEquipa(String eq){ return getEquipas().containsKey(eq);//return equipas.containsKey(eq);
     }
     public Jogador getjogador(String j){
         Jogador resp=null;

@@ -254,7 +254,57 @@ public class UserInterface {
         String casa = scin.nextLine();
         System.out.println("Equipa fora");
         String fora = scin.nextLine();
-
+        if(this.tsf.existeEquipa(casa)&& this.tsf.existeEquipa(fora)){
+            teamCasa = this.tsf.getEquipa(casa);
+            System.out.println("Equipa casa: "+teamCasa.getNome());
+            for(Jogador j : teamCasa.getJogadores()){
+                System.out.println(j.getCamisola()+" - "+j.getNome()+" Habilidade: "+j.calculaHabilidade());
+            }
+            System.out.println("Selecione 1 a 1 os 11 titulares!");
+            for(int i = 0; i < 11; i++){
+                int numero = scin.nextInt();
+                jogadoresCasa.add(teamCasa.getJogadorByNumber(numero));
+                jogadoresCasaInt.add(numero);
+            }
+            //subs casa
+            System.out.println("Deseja efetuar substituicoes?");
+            System.out.println("0-Nao");
+            System.out.println("1-Sim");
+            int subsOpC=scin.nextInt();
+            if(subsOpC==1) {
+                scin.nextLine();
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Substituição Casa " + (i + 1) + ":");
+                    String subs = scin.nextLine();
+                    subsCasa.put(Integer.parseInt(subs.split("->")[0]), Integer.parseInt(subs.split("->")[1]));
+                }
+            }
+            //fora
+            teamFora = this.tsf.getEquipa(fora);
+            System.out.println("Equipa fora: "+teamFora.getNome());
+            for(Jogador j : teamFora.getJogadores()){
+                System.out.println(j.getCamisola()+" - "+j.getNome()+" Habilidade: "+j.calculaHabilidade());
+            }
+            for(int i = 0; i < 11; i++){
+                int numero = scin.nextInt();
+                jogadoresFora.add(teamFora.getJogadorByNumber(numero));
+                jogadoresForaInt.add(numero);
+            }
+            System.out.println("Deseja efetuar substituicoes?");
+            System.out.println("0-Nao");
+            System.out.println("1-Sim");
+            int subsOpF=scin.nextInt();
+            if(subsOpF==1) {
+                //subs fora
+                scin.nextLine();
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Substituição Fora " + (i + 1) + ":");
+                    String subs = scin.nextLine();
+                    subsFora.put(Integer.parseInt(subs.split("->")[0]), Integer.parseInt(subs.split("->")[1]));
+                }
+            }
+        }
+        /*
         if(this.tsf.getEquipas().containsKey(casa)){
             teamCasa = this.tsf.getEquipa(casa);
             System.out.println("Equipa casa: "+teamCasa.getNome());
@@ -267,8 +317,8 @@ public class UserInterface {
                 jogadoresCasa.add(teamCasa.getJogadorByNumber(numero));
                 jogadoresCasaInt.add(numero);
             }
-        }
-
+        }*/
+/*
         if(this.tsf.getEquipas().containsKey(fora)){
             teamFora = this.tsf.getEquipa(fora);
             System.out.println("Equipa fora: "+teamFora.getNome());
@@ -280,8 +330,9 @@ public class UserInterface {
                 jogadoresFora.add(teamFora.getJogadorByNumber(numero));
                 jogadoresForaInt.add(numero);
             }
-        }
-        scin.nextLine();//nao chego aqui
+        }*/
+        /*
+        scin.nextLine();
         for(int i = 0;i<3;i++){
             System.out.println("Substituição Casa "+(i+1)+":");
             String subs = scin.nextLine();
@@ -293,7 +344,7 @@ public class UserInterface {
             String subs = scin.nextLine();
             subsFora.put(Integer.parseInt(subs.split("->")[0]),Integer.parseInt(subs.split("->")[1]));
         }
-
+*/
         if(calculaProbMarcar(jogadoresCasa,jogadoresFora) == 0){
             golosCasa = rand.nextInt(5);
             golosFora = rand.nextInt(2);

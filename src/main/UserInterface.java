@@ -336,6 +336,7 @@ public class UserInterface {
 
         Jogo j = new Jogo(teamCasa.getNome(),teamFora.getNome(),golosCasa,golosFora,data,jogadoresCasaInt,subsCasa,jogadoresForaInt,subsFora);
         tsf.adicionarJogo(j);
+        System.out.println(teamCasa.getNome()+" " +golosCasa+ " : "+golosFora+" "+teamFora.getNome());
     }
 
     public int calculaProbMarcar(List<Jogador> eCasa,List<Jogador> eFora){

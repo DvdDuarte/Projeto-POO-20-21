@@ -6,31 +6,37 @@ import java.util.stream.Collectors;
 
 
 public class Equipa {
-
+    private int camisolas[]=new int[100];
     private String nome;
     private List<Jogador> jogadores;
 
     public Equipa() {
-
+        //numCamisolas todo a zero
+        for(int i=0;i<100;i++) camisolas[i]=0;
         this.nome = "";
         this.jogadores = new ArrayList<>();
 
     }
     public Equipa(String nome) {
-
+      //numCamisolas todo a zero
+        for(int i=0;i<100;i++) camisolas[i]=0;
         setNome(nome);
         this.jogadores = new ArrayList<>();
 
     }
 
     public Equipa(String nome, List<Jogador> jogadores) {
-
+        //numCamisolas atualizado
+        for(int i=0;i<100;i++) camisolas[i]=0;
+        atualizaCamisolas(jogadores);//faz o setCamisolas aqui dentro
         this.nome = nome;
         this.setJogadores(jogadores);
     }
 
     public Equipa (Equipa equipa) {
-
+        //num camisolas atualizado
+        for(int i=0;i<100;i++) camisolas[i]=0;
+        atualizaCamisolas(equipa.getJogadores());//faz o setCamisolas aqui dentro
         this.nome = equipa.getNome();
         this.jogadores = equipa.getJogadores();
 
@@ -39,6 +45,37 @@ public class Equipa {
     public static Equipa parse(String input){
         String[] campos = input.split(",");
         return new Equipa(campos[0]);
+    }
+
+    public int[] getCamisolas() {
+        return camisolas;
+    }
+
+    public void setCamisolas(int[] camisolas) {
+        this.camisolas = camisolas;
+    }
+    public int atualizaCamisolas(List<Jogador> js){
+        int resp=0;
+        int aux[] = getCamisolas();
+        int aux2[] = new int[100];
+        for (int i = 0; i < 100; i++) aux2[i] = 0;
+        for(Jogador j: js) {
+            int nc = j.getCamisola();
+            if (aux[nc] == 0) aux2[nc] = 1;
+            else {
+                int k;
+                for (k = 0; k < 100 && aux[k] != 0; k++) ;
+                if (k == 100) resp = -1;//erro, jogadores de mais
+                else {
+                    aux2[k] = 1;
+                    j.setCamisola(k);
+                    resp = 1;
+                }
+            }
+        }
+        if(resp!=-1) setCamisolas(aux2);
+
+        return resp;
     }
 
     public String getNome() {
@@ -69,9 +106,8 @@ public class Equipa {
     }
 
     public void addJogador(Jogador jogador) {
-
         this.jogadores.add(jogador);
-
+        atualizaCamisolas(getJogadores());
     }
 
     public Jogador getJogadorByNumber(int number){

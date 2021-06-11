@@ -122,6 +122,7 @@ public class TripleSFootball {
                     String equipaVelha = jogadores.get(nomeJ).getHistorial().get(jogadores.get(nomeJ).getHistorial().size() - 1);
                     equipas.get(equipaVelha).removeJogador(jogadores.get(nomeJ));
                     equipas.get(nomeENova).addJogador(jogadores.get(nomeJ));
+                    equipas.get(nomeENova).atualizaCamisolas(equipas.get(nomeENova).getJogadores());//redundante?
                     jogadores.get(nomeJ).addToHistorial(nomeENova);
                     System.out.println("Transferencia efetuada com sucesso!");
                 }else{

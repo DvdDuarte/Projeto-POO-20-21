@@ -1,7 +1,5 @@
 package main;
 
-import gestão.Equipa;
-import gestão.GuardaRedes;
 import gestão.*;
 
 import java.io.File;
@@ -285,6 +283,7 @@ public class UserInterface {
             for(Jogador j : teamFora.getJogadores()){
                 System.out.println(j.getCamisola()+" - "+j.getNome()+" Habilidade: "+j.calculaHabilidade());
             }
+            System.out.println("Selecione 1 a 1 os 11 titulares!");
             for(int i = 0; i < 11; i++){
                 int numero = scin.nextInt();
                 jogadoresFora.add(teamFora.getJogadorByNumber(numero));
@@ -348,6 +347,7 @@ public class UserInterface {
         Jogo j = new Jogo(teamCasa.getNome(),teamFora.getNome(),golosCasa,golosFora,data,jogadoresCasaInt,subsCasa,jogadoresForaInt,subsFora);
         tsf.adicionarJogo(j);
         System.out.println(teamCasa.getNome()+" " +golosCasa+ " : "+golosFora+" "+teamFora.getNome());
+        scin.nextLine();
     }
 
     public int calculaProbMarcar(List<Jogador> eCasa,List<Jogador> eFora){
@@ -375,14 +375,14 @@ public class UserInterface {
     public void listarEquipas(){
         Map<String, Equipa> equipas = this.tsf.getEquipas();
         for(Map.Entry<String,Equipa> entry : equipas.entrySet()){
-            System.out.println(entry.getKey());
+            System.out.println("Valor: "+String.format("%.2f",entry.getValue().habilidade_Equipa())+" - "+entry.getKey());
         }
     }
 
     public void listarJogadores(){
         Map<String, Jogador> jogadores = this.tsf.getJogadores();
         for(Map.Entry<String,Jogador> entry : jogadores.entrySet()){
-            System.out.println(entry.getKey());
+            System.out.println("Valor: "+String.format("%.2f",entry.getValue().calculaHabilidade())+" - "+entry.getKey());
         }
     }
 
@@ -394,7 +394,7 @@ public class UserInterface {
             Equipa team = this.tsf.getEquipa(equipa);
 
             for(Jogador j : team.getJogadores()){
-                System.out.println(j.getCamisola()+" - "+j.getNome());
+                System.out.println(j.getCamisola()+" - "+j.getNome()+" - Valor: "+String.format("%.2f",j.calculaHabilidade()));
             }
         }
         else System.out.println("Equipa não se encontra na base de dados!");

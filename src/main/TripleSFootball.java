@@ -1,7 +1,6 @@
 package main;
 
 import gestão.*;
-import gestão.Equipa;
 
 import java.util.ArrayList;
 import java.util.HashMap;

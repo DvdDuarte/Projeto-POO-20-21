@@ -1,6 +1,4 @@
-package main;
-
-import gestão.Jogador;
+package gestão;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -74,15 +74,6 @@ public class Parser {
             }
         }
 
-        //debug
-        /*for (Equipa e: equipas.values()){
-            System.out.println(e.toString());
-        }
-        for (Jogo jog: jogos){
-            System.out.println(jog.toString());
-        }
-        */
-
     }
 
     public Map<String, Equipa> getEquipas(){

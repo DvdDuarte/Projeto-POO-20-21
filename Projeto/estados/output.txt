@@ -338,7 +338,7 @@ Equipa:Sporting Club Shostakovich
 Guarda-Redes:Ana Sofia da Silva Alves,43,57,69,51,62,50,56,55,62
 Lateral:Bernardo Emanuel Magalhaes Saraiva,30,94,94,98,32,73,73,98,97
 Defesa:Rodrigo Simoes Guimaraes Mendes,1,61,41,30,72,71,68,6
-Defesa:Daniel Jose Coutinho Goncalves De Faria,22,98,68,52,71,60,54,19
+Defesa:Daniel Jose Coutinho Goncalves De Faria,99,99,99,99,99,99,99,99
 Lateral:Joao Luis Lopes Giesteira,33,72,56,34,71,75,71,84,87
 Medio:Daniel Silva Xavier,11,87,80,59,68,58,98,73,61
 Medio:Tiago Andre Leca Carneiro,38,51,59,44,47,59,92,74,19
